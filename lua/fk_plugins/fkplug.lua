@@ -72,5 +72,23 @@ require("lazy").setup({
     --  end,
   -- },
 
+
+   --FKvim Deshboard 
+   --
+  {
+    "glepnir/dashboard-nvim",
+    config = function()
+      safe_require("fk_plugins.fkui")
+    end,
+  },
+
+  -- Git
+  { "lewis6991/gitsigns.nvim" },
+
+  -- Comments
+  { "numToStr/Comment.nvim" },
+
+
+
 })
 
