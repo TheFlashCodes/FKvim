@@ -9,18 +9,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- 🔐 Safe require function
+-- 🔐 Safe require
 local function safe_require(module)
-  local status, mod = pcall(require, module)
-  if not status then
+  local ok, mod = pcall(require, module)
+  if not ok then
     vim.notify("Failed to load " .. module, vim.log.levels.ERROR)
   end
   return mod
 end
 
--- 📦 Install plugins with lazy.nvim
+-- 📦 Lazy plugin setup
 require("lazy").setup({
-  -- 💅 Status line
+
+  -- 💅 Statusline
   {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -39,7 +40,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 🎨 Catppuccin theme
+  -- 🎨 Catppuccin colorscheme
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -49,8 +50,27 @@ require("lazy").setup({
       transparent_background = true,
     },
   },
+
+  -- 🧩 ONLY USE ONE INDENT PLUGIN
+  -- ✅ Recommended: mini.indentscope (with animation)
+  {
+     "echasnovski/mini.indentscope",
+       version = false,
+       event = "BufReadPre",
+       config = function()
+       require("fk_configs.fk_indent").setup()
+    end,
+  },
+
+  -- ❌ Optional: If you want ibl instead, uncomment below and disable mini.indentscope
+  -- {
+     --"lukas-reineke/indent-blankline.nvim",
+     --main = "ibl",
+     --event = "BufReadPre",
+     --config = function()
+      --   require("fk_plugins.fk_indent").setup()
+    --  end,
+  -- },
+
 })
-
-
-
 
