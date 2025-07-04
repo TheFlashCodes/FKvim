@@ -61,3 +61,9 @@ vim.g.mapleader = " "  -- Space as leader key
 -- 🔃 Reload
     map("n", "<leader>lr", ':!browser-sync start --server --files "*.html, *.css, *.js"<CR>', opts)
 
+
+
+-- Navigation Keys 
+vim.keymap.set("n", "<D-Right>", "<C-w>l", { desc = "Move to Code (Right)", noremap = true, silent = true })
+vim.keymap.set("n", "<D-Left>", "<C-w>h", { desc = "Move to Neo-tree (Left)", noremap = true, silent = true })
+
