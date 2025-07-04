@@ -35,7 +35,8 @@ require("lazy").setup({
     config = function()
       require("transparent").setup({
         enable = true,
-        extra_groups = { "NormalFloat", "NvimTreeNormal" },
+        extra_groups = { "NormalFloat", "NvimTreeNormal","NormalFloat", "FloatBorder", "TelescopeNormal",
+                        "ToggleTermNormal", "ToggleTermBorder"},
       })
     end,
   },
@@ -101,6 +102,16 @@ require("lazy").setup({
     require("fk_plugins.fk_neotre").setup()
     end,
   },
+
+  -- FKterminal 
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+        require("fk_plugins.fk_term").setup()
+    end,
+    event = "VeryLazy", -- optional lazy load
+  }
 
 
 
