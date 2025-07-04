@@ -25,7 +25,7 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require("lualine").setup({})
+      require("fk_plugins.fkcore.fk_status").setup({})
     end,
   },
 
@@ -151,7 +151,28 @@ require("lazy").setup({
     config = function()
         require("telescope").load_extension("project")
     end,
+    }, 
+
+  
+   -- Integrating Syntax Highlighting  
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                        "lua", "javascript", "html", "css","markdown", "vim"
+                },
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+         },
+        indent = { enable = true },
+        })
+        end,
     },
+
 
 })
 
