@@ -1,0 +1,90 @@
+{
+  "name": "FKvim",
+  "version": "1.1.0",
+  "codename": "LST",
+  "description": "A turbocharged NeoVim configuration crafted for modern developers with built-in support for file exploration, Git integration, and a minimal dashboard UI.",
+  "author": {
+    "name": "Mayank Kumar Jha",
+    "github": "https://github.com/flashcodes-themayankjha",
+    "email": "the.mayank.k.jha@gmail.com"
+  },
+  "features": {
+    "dashboard": {
+      "enabled": true,
+      "autoload_on_start": true,
+      "quote_rotation": true
+    },
+    "file_explorer": {
+      "plugin": "neo-tree.nvim",
+      "features": [
+        "File/Folder Creation",
+        "Rename",
+        "Delete",
+        "Live Search (Telescope)",
+        "Git Integration"
+      ],
+      "shortcuts": {
+        "toggle": "<leader>e",
+        "find_current": "<leader>f",
+        "add": ["a", "+"],
+        "rename": "r",
+        "delete": "d",
+        "live_search": "/"
+      }
+    },
+    "themes": {
+      "colorscheme": "catppuccin",
+      "flavour": "mocha",
+      "transparent_background": true
+    },
+    "keybindings": {
+      "leader_key": " ",
+      "clipboard": {
+        "copy": "<leader>y",
+        "paste": "<leader>p",
+        "select_all": "<leader>a"
+      },
+      "navigation": {
+        "neotree_to_editor": "Cmd+Right",
+        "editor_to_neotree": "Cmd+Left"
+      },
+      "tabs": {
+        "next": "<leader>bn",
+        "prev": "<leader>bp"
+      },
+      "terminal": {
+        "toggle": "<Space>tt",
+        "horizontal": "<Space>th",
+        "vertical": "<Space>tv",
+        "float": "<Space>tf"
+      }
+    }
+  },
+  "dependencies": [
+    "neo-tree.nvim",
+    "catppuccin",
+    "nvim-lualine",
+    "nvim-transparent",
+    "telescope.nvim",
+    "dashboard-nvim",
+    "toggleterm.nvim",
+    "bufferline.nvim",
+    "indent-blankline.nvim",
+    "mini.indentscope"
+  ],
+  "next_release": {
+    "version": "1.2.0",
+    "planned_features": [
+      "Integrated Terminal View",
+      "Enhanced Telescope Features",
+      "Treesitter Syntax Highlighting",
+      "Bufferline for Tabs"
+    ]
+  },
+  "project": {
+    "repository": "https://github.com/yourusername/FKvim",
+    "license": "MIT",
+    "tags": ["neovim", "nvim", "vim", "file-explorer", "telescope", "ui", "git"]
+  }
+}
+
