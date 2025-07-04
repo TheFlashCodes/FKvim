@@ -24,7 +24,7 @@ function M.setup()
       },
     },
     exclude = {
-      filetypes = { "help", "dashboard", "lazy" }, -- Allow in NvimTree
+      filetypes = { "help", "dashboard", "lazy","neo-tree" }, -- Allow in NvimTree
       buftypes = { "terminal", "nofile" },
     },
   })

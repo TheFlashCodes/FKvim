@@ -47,8 +47,7 @@ require("lazy").setup({
     priority = 1000,
     opts = {
       flavour = "mocha",
-      transparent_background = true,
-    },
+      transparent_background = true, },
   },
 
   -- 🧩 ONLY USE ONE INDENT PLUGIN
@@ -87,6 +86,21 @@ require("lazy").setup({
 
   -- Comments
   { "numToStr/Comment.nvim" },
+  
+
+  -- Neotree (File Explorer)
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+     "nvim-lua/plenary.nvim",
+     "nvim-tree/nvim-web-devicons",
+     "MunifTanjim/nui.nvim",
+    },
+    config = function()
+    require("fk_plugins.fk_neotre").setup()
+    end,
+  },
 
 
 
