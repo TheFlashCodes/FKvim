@@ -1,23 +1,21 @@
--- Initializing FKui as default Buffer for FKvim
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    -- Check if Neovim was opened with a folder
-    if vim.fn.argc() == 0 and vim.fn.isdirectory(vim.fn.getcwd()) == 1 then
-      -- Close the default buffer
-      vim.cmd("enew")         -- New empty buffer
-      vim.cmd("Dashboard")    -- Open FKvim Dashboard
+    local args = vim.fn.argv()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+
+    -- Open Dashboard and NeoTree only if opened with a folder (not specific files)
+    if #args == 0 and vim.fn.isdirectory(vim.fn.getcwd()) == 1 then
+      vim.schedule(function()
+        vim.cmd("Dashboard")
+        vim.cmd("Neotree show")
+      end)
+    elseif bufname == "" and filetype == "" then
+      vim.schedule(function()
+        vim.cmd("Dashboard")
+      end)
     end
   end,
 })
-
--- AutoLoading File Explorer
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 0 and vim.fn.isdirectory(vim.fn.getcwd()) == 1 then
-      vim.cmd("Neotree show")
-    end
-  end,
-})
-
