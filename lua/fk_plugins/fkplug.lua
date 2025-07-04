@@ -103,7 +103,7 @@ require("lazy").setup({
     end,
   },
 
-  -- FKterminal 
+  -- FKterm
   {
     "akinsho/toggleterm.nvim",
     version = "*",
@@ -111,7 +111,18 @@ require("lazy").setup({
         require("fk_plugins.fk_term").setup()
     end,
     event = "VeryLazy", -- optional lazy load
-  }
+  },
+
+  -- FKbuffer
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "BufReadPre",
+    config = function()
+        require("fk_plugins.fkui.fk_buffer").setup()
+  end,
+},
 
 
 

@@ -65,8 +65,38 @@ vim.g.mapleader = " "  -- Space as leader key
     map("n", "<leader>lr", ':!browser-sync start --server --files "*.html, *.css, *.js"<CR>', opts)
 
 
+-- FK Buffer Bindings 
+
+-- BufferLine navigation
+    map('n', '<Leader>bn', ':BufferLineCycleNext<CR>', opts)
+    map('n', '<Leader>bp', ':BufferLineCyclePrev<CR>', opts)
+    map('n', '<Leader>1', ':BufferLineGoToBuffer 1<CR>', opts)
+    map('n', '<Leader>2', ':BufferLineGoToBuffer 2<CR>', opts)
+    map('n', '<Leader>3', ':BufferLineGoToBuffer 3<CR>', opts)
+    map('n', '<Leader>4', ':BufferLineGoToBuffer 4<CR>', opts)
+    map('n', '<Leader>rc', ':BufferLinePickClose<CR>', opts)
+    map('n', '<Leader>bo', ':BufferLineCloseRight<CR>', opts)
+    map('n', '<Leader>bi', ':BufferLineCloseLeft<CR>', opts)
+    map('n', '<Leader>bp', ':BufferLinePick<CR>', opts)
+    map('n', '<Leader>bl', ':BufferLineMovePrev<CR>', opts)
+    map('n', '<Leader>bm', ':BufferLineMoveNext<CR>', opts)
+    map('n', '<Leader>bp', ':BufferLineTogglePin<CR>', opts)
+    map('n','<Leader>bd', '<cmd>bd<CR>', opts, { desc = "Delete Buffer" })
+
+    -- Reorder buffers
+        map("n", "<leader>bl", ":BufferLineMovePrev<CR>", opts)
+        map("n", "<leader>bm", ":BufferLineMoveNext<CR>", opts)
+
+    -- Pin/Unpin buffer
+        map("n", "<leader>bp", ":BufferLineTogglePin<CR>", opts)
+
+    -- Pick & close buffer (optional)
+        map("n", "<leader>rc", ":BufferLinePickClose<CR>", opts)
+
 
 -- Navigation Keys 
 vim.keymap.set("n", "<D-Right>", "<C-w>l", { desc = "Move to Code (Right)", noremap = true, silent = true })
 vim.keymap.set("n", "<D-Left>", "<C-w>h", { desc = "Move to Neo-tree (Left)", noremap = true, silent = true })
+
+
 
