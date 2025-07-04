@@ -45,10 +45,14 @@ vim.g.mapleader = " "  -- Space as leader key
     map("n", "<C-k>", "<C-w>k", opts)
 
 -- 🔍 Telescope
-    map("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+    map("n", "<leader>/", ":Telescope find_files<CR>", opts)
+    map("n", "<leader>//", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opts)
     map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
     map("n", "<leader>fb", ":Telescope buffers<CR>", opts)
     map("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
+    map("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)  -- recently opened
+    map("n", "<leader>rp", "<cmd>Telescope project<CR>", { desc = "Recent Projects" })
+
 
 -- 📂 NeoTree
     map("n", "<leader>e", ":Neotree toggle<CR>", opts)
