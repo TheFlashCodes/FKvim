@@ -1,7 +1,10 @@
 require("fk_configs.fk_properties")
+require("fk_configs.fk_cursor")
+require("fk_configs.fk_binds")
 
 
-
+-- Loading AutoScript Commands
+require("fk_autoscripts")
 
 --                      Loading All the plugins
 
@@ -30,3 +33,8 @@ end
 
 
 require("fk_plugins.fkplug")
+
+
+
+-- Using Theme 
+require("fk_plugins.fkui")
