@@ -57,6 +57,9 @@ vim.g.mapleader = " "  -- Space as leader key
 -- 🧱 Terminal
     map("n", "<leader>tt", ":ToggleTerm<CR>", opts)
     map("n", "<leader>tf", ":ToggleTerm direction=float<CR>", opts)
+    map("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>", opts)
+    map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", opts)
+    map("n", "<leader>tc", "<cmd>ToggleTermToggleAll<CR>", opts)
 
 -- 🔃 Reload
     map("n", "<leader>lr", ':!browser-sync start --server --files "*.html, *.css, *.js"<CR>', opts)
