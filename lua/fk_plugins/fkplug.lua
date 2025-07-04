@@ -121,10 +121,37 @@ require("lazy").setup({
     event = "BufReadPre",
     config = function()
         require("fk_plugins.fkui.fk_buffer").setup()
-  end,
-},
+    end,
+  },
+  
 
+  --FKtelescope
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.6",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "Telescope",
+    config = function()
+        require("fk_plugins.fk_telescope").setup()
+    end,
+  },
 
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    cond = vim.fn.executable("make") == 1,
+    config = function()
+        require("telescope").load_extension("fzf")
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope-project.nvim",
+    event = "VeryLazy",
+    config = function()
+        require("telescope").load_extension("project")
+    end,
+    },
 
 })
 
