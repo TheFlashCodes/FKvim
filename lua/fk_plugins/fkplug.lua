@@ -1,3 +1,4 @@
+
 -- 🚀 Bootstrap lazy.nvim if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,6 +19,7 @@ local function safe_require(module)
   return mod
 end
 
+
 -- 📦 Lazy plugin setup
 require("lazy").setup({
 
@@ -35,8 +37,10 @@ require("lazy").setup({
     config = function()
       require("transparent").setup({
         enable = true,
-        extra_groups = { "NormalFloat", "NvimTreeNormal","NormalFloat", "FloatBorder", "TelescopeNormal",
-                        "ToggleTermNormal", "ToggleTermBorder"},
+        extra_groups = {
+          "NormalFloat", "NvimTreeNormal", "FloatBorder",
+          "TelescopeNormal", "ToggleTermNormal", "ToggleTermBorder",
+        },
       })
     end,
   },
@@ -48,33 +52,21 @@ require("lazy").setup({
     priority = 1000,
     opts = {
       flavour = "mocha",
-      transparent_background = true, },
+      transparent_background = true,
+    },
   },
 
-  -- 🧩 ONLY USE ONE INDENT PLUGIN
-  -- ✅ Recommended: mini.indentscope (with animation)
+  -- 🧩 Indentation Guides
   {
-     "echasnovski/mini.indentscope",
-       version = false,
-       event = "BufReadPre",
-       config = function()
-       require("fk_configs.fk_indent").setup()
+    "echasnovski/mini.indentscope",
+    version = false,
+    event = "BufReadPre",
+    config = function()
+      require("fk_configs.fk_indent").setup()
     end,
   },
 
-  -- ❌ Optional: If you want ibl instead, uncomment below and disable mini.indentscope
-  -- {
-     --"lukas-reineke/indent-blankline.nvim",
-     --main = "ibl",
-     --event = "BufReadPre",
-     --config = function()
-      --   require("fk_plugins.fk_indent").setup()
-    --  end,
-  -- },
-
-
-   --FKvim Deshboard 
-   --
+  -- 🖥️ Dashboard
   {
     "glepnir/dashboard-nvim",
     config = function()
@@ -82,57 +74,39 @@ require("lazy").setup({
     end,
   },
 
-  -- Git
-  { "lewis6991/gitsigns.nvim" },
-
-  -- Comments
-  { "numToStr/Comment.nvim" },
-  
-
-  -- Neotree (File Explorer)
+  -- 📁 File Explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
-     "nvim-lua/plenary.nvim",
-     "nvim-tree/nvim-web-devicons",
-     "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
     config = function()
-    require("fk_plugins.fk_neotre").setup()
+      require("fk_plugins.fk_neotre").setup()
     end,
   },
 
-  -- FKterm
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = function()
-        require("fk_plugins.fk_term").setup()
-    end,
-    event = "VeryLazy", -- optional lazy load
-  },
-
-  -- FKbuffer
+  -- 🔁 Bufferline
   {
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "BufReadPre",
     config = function()
-        require("fk_plugins.fkui.fk_buffer").setup()
+      require("fk_plugins.fkui.fk_buffer").setup()
     end,
   },
-  
 
-  --FKtelescope
+  -- 🔍 Telescope (Fuzzy Finder)
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.6",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "Telescope",
     config = function()
-        require("fk_plugins.fk_telescope").setup()
+      require("fk_plugins.fk_telescope").setup()
     end,
   },
 
@@ -141,7 +115,7 @@ require("lazy").setup({
     build = "make",
     cond = vim.fn.executable("make") == 1,
     config = function()
-        require("telescope").load_extension("fzf")
+      require("telescope").load_extension("fzf")
     end,
   },
 
@@ -149,30 +123,71 @@ require("lazy").setup({
     "nvim-telescope/telescope-project.nvim",
     event = "VeryLazy",
     config = function()
-        require("telescope").load_extension("project")
+      require("telescope").load_extension("project")
     end,
-    }, 
+  },
 
-  
-   -- Integrating Syntax Highlighting  
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                        "lua", "javascript", "html", "css","markdown", "vim"
-                },
+  -- 🌈 Treesitter (Syntax Highlighting)
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "lua", "javascript", "html", "css", "markdown", "vim" },
         highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false,
-         },
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
         indent = { enable = true },
-        })
-        end,
+      })
+    end,
+  },
+
+  -- ✨ Completion Engine
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
+      "onsails/lspkind.nvim", -- 🧠 Icons for completions
     },
+    config = function()
+      require("fk_plugins.fkcore.autofksuggest").setup()
+    end,
+  },
 
+  -- 🧠 Mason (LSP Installer)
+  { "neovim/nvim-lspconfig", lazy = true },
 
+  { "williamboman/mason.nvim", config = true },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "ts_ls", "pyright", "jdtls" },
+      })
+      require("fk_plugins.fkcore.autofk").setup()
+    end,
+  },
+
+  -- 🧪 Terminal
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+      require("fk_plugins.fk_term").setup()
+    end,
+    event = "VeryLazy",
+  },
+
+  -- 🔍 Git & Comments
+  { "lewis6991/gitsigns.nvim" },
+  { "numToStr/Comment.nvim" },
 })
-
