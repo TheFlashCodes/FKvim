@@ -19,3 +19,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
+
+vim.o.mousemoveevent = true -- 🔥 Required for hover to work!
+
+-- Smart winbar setup using a global function
+_G.get_winbar = function()
+  local navic_ok, navic = pcall(require, "nvim-navic")
+  if navic_ok and navic.is_available() then
+    return navic.get_location()
+  end
+  return ""
+end
+
+vim.o.winbar = "%{%v:lua.get_winbar()%}"
