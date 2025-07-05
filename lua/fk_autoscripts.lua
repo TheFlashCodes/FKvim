@@ -1,3 +1,6 @@
+vim.o.updatetime = 300 -- Required for CursorHold to trigger quickly
+
+
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
@@ -32,3 +35,4 @@ _G.get_winbar = function()
 end
 
 vim.o.winbar = "%{%v:lua.get_winbar()%}"
+ 

@@ -1,14 +1,19 @@
-
+-- lua/fk_plugins/fkcore/autofk.lua
 local M = {}
 
 function M.setup()
-  -- 🧩 LSP capabilities for nvim-cmp
+  -- 🧠 LSP capabilities for nvim-cmp
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
   local navic = require("nvim-navic")
 
-  -- 🛠️ Setup LSP servers (installed via mason-lspconfig)
   local lspconfig = require("lspconfig")
-  local servers = { "lua_ls", "ts_ls", "pyright" }
+
+  -- ✅ Replace tsserver with vtsls
+  local servers = {
+    "lua_ls",
+    "vtsls",  -- ✅ Modern TypeScript LSP
+    "pyright",
+  }
 
   local on_attach = function(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
@@ -23,7 +28,7 @@ function M.setup()
     })
   end
 
-  -- 🔧 Special handling for Java (jdtls)
+  -- ☕ Java (jdtls)
   local jdtls_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
   if vim.fn.isdirectory(jdtls_path) == 1 then
     vim.api.nvim_create_autocmd("FileType", {

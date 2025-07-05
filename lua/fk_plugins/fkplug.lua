@@ -1,3 +1,5 @@
+require("fk_plugins.fkcore.fk_diagnosis").setup()
+
 
 -- 🚀 Bootstrap lazy.nvim if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -66,11 +68,24 @@ require("lazy").setup({
         vim.api.nvim_set_hl(0, "NavicIconsModule",   { fg = cp.mauve })
         vim.api.nvim_set_hl(0, "NavicIconsNamespace",{ fg = cp.teal })
         vim.api.nvim_set_hl(0, "NavicIconsInterface",{ fg = cp.lavender })
-
-        -- Optional: separator and text
+       
+               -- Optional: separator and text
         vim.api.nvim_set_hl(0, "NavicText", { fg = cp.subtext1 })
         vim.api.nvim_set_hl(0, "NavicSeparator", { fg = cp.overlay0 })
-     end,
+
+               
+        -- Sign Icons (gutter icons)
+        vim.api.nvim_set_hl(0, "DiagnosticSignError", { fg = cp.red, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "DiagnosticSignWarn",  { fg = cp.peach, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "DiagnosticSignHint",  { fg = cp.yellow, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "DiagnosticSignInfo",  { fg = cp.pink, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = cp.red })
+        vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn",  { fg = cp.yellow })
+        vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint",  { fg = cp.yellow })
+        vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo",  { fg = cp.pink })
+ 
+
+        end,
 },
 
   -- 🧩 Indentation Guides
@@ -188,7 +203,7 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "pyright", "jdtls" },
+        ensure_installed = { "lua_ls", "vtsls", "pyright", "jdtls" },
       })
       require("fk_plugins.fkcore.autofk").setup()
     end,
