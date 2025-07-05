@@ -5,7 +5,6 @@ function M.setup()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
-
   require("luasnip.loaders.from_vscode").lazy_load()
 
   cmp.setup({

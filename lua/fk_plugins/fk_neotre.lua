@@ -1,3 +1,4 @@
+
 -- lua/fk_configs/fk_neotree.lua
 local M = {}
 
@@ -7,6 +8,7 @@ function M.setup()
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
+    enable_diagnostics_follow_cursor = true,
 
     window = {
       position = "left",
@@ -61,9 +63,22 @@ function M.setup()
           ignored = "◌",
         },
       },
+      diagnostics = {
+        symbols = {
+          hint = "󰌵 ",
+          info = " ",
+          warn = " ",
+          error = " ",
+        },
+        highlights = {
+          hint = "DiagnosticSignHint",
+          info = "DiagnosticSignInfo",
+          warn = "DiagnosticSignWarn",
+          error = "DiagnosticSignError",
+        },
+      },
     },
   })
 end
 
 return M
-
