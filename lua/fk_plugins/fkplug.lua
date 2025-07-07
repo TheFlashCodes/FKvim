@@ -303,6 +303,22 @@ require("lazy").setup({
   end,
 },
 
+-- ⌨️ Which Key
+{
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {},
+  keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
+    },
+  },
+},
+
     -- 🧪 Terminal
   {
     "akinsho/toggleterm.nvim",
