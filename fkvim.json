@@ -1,7 +1,7 @@
 {
   "name": "FKvim",
-  "version": "1.2.4",
-  "codename": "LST",
+  "version": "1.2.2",
+  "codename": "Stable",
   "description": "A turbocharged NeoVim configuration crafted for modern developers with built-in support for file exploration, Git integration, and a minimal dashboard UI.",
   "author": {
     "name": "Mayank Kumar Jha",
