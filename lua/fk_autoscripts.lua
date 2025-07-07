@@ -43,3 +43,10 @@ _G.get_winbar = function()
 end
 
 vim.o.winbar = "%{%v:lua.get_winbar()%}"
+
+
+-- Autoscript to run Update
+vim.api.nvim_create_user_command("FkUpdate", function()
+  require("fk_plugins.fkcore.fk_updater").update_fkvim()
+end, {})
+
