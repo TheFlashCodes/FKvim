@@ -324,7 +324,7 @@ require("lazy").setup({
     config = function()
       require("nvim-navic").setup({
         highlight = true,
-        separator = "  ",
+        separator = "  ",
         depth_limit = 5,
       })
     end,
