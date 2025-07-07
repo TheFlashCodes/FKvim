@@ -1,7 +1,8 @@
 require("fk_configs.fk_properties")
 require("fk_configs.fk_cursor")
 require("fk_configs.fk_binds")
-
+require("fk_plugins.fkui.fknotifier")
+require("fk_plugins.fkui.auto_notify")
 -- Loading AutoScript Commands
 require("fk_autoscripts")
 

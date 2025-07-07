@@ -1,31 +1,39 @@
-vim.o.updatetime = 300 -- Required for CursorHold to trigger quickly
+-- Files History Loader for Dashboard
+vim.o.shada = "'100,<50,s10,h"
 
 
+-- Fkvim Command
+vim.api.nvim_create_user_command("Fkvim", function()
+  -- This works if you're using `dashboard-nvim` as your dashboard plugin
+  vim.cmd("enew")                          -- open a new empty buffer
+  vim.cmd("Dashboard")                    -- launch the dashboard
+end, {})
 
-vim.api.nvim_create_autocmd("VimEnter", {
+
+-- 🔁 Toggle cursorline only in insert mode
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   callback = function()
-    local args = vim.fn.argv()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local bufname = vim.api.nvim_buf_get_name(bufnr)
-    local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-
-    -- Open Dashboard and NeoTree only if opened with a folder (not specific files)
-    if #args == 0 and vim.fn.isdirectory(vim.fn.getcwd()) == 1 then
-      vim.schedule(function()
-        vim.cmd("Dashboard")
-        vim.cmd("Neotree show")
-      end)
-    elseif bufname == "" and filetype == "" then
-      vim.schedule(function()
-        vim.cmd("Dashboard")
-      end)
-    end
+    vim.opt_local.cursorline = true
   end,
 })
 
-vim.o.mousemoveevent = true -- 🔥 Required for hover to work!
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  callback = function()
+    vim.opt_local.cursorline = false
+  end,
+})
 
--- Smart winbar setup using a global function
+-- 🎨 Transparent cursorline on colorscheme change
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
+  end,
+})
+
+-- 🖱 Required for LSP hover to work
+vim.o.mousemoveevent = true
+
+-- 🧠 Smart winbar using nvim-navic breadcrumbs
 _G.get_winbar = function()
   local navic_ok, navic = pcall(require, "nvim-navic")
   if navic_ok and navic.is_available() then
@@ -35,4 +43,3 @@ _G.get_winbar = function()
 end
 
 vim.o.winbar = "%{%v:lua.get_winbar()%}"
- 
