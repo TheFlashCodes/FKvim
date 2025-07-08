@@ -1,28 +1,38 @@
--- lua/fk_plugins/fkui/fk_notify.lua
+
 local M = {}
 
-function M.setup()
+function M.run()
   local notify = require("notify")
 
-  notify.setup({
-    background_colour = "#000000", -- or "Normal" if theme supports it
-    fps = 60,
+  -- Step 1: "Starting FKvim..."
+  notify("Starting FKvim...", "info", {
+    title = "💻 FKvim Notifier",
+    timeout = 1500,
     render = "default",
-    stages = "fade_in_slide_out",
-    timeout = 2000,
-    max_width = 60,
-    icons = {
-      ERROR = "",
-      WARN  = "",
-      INFO  = "",
-      DEBUG = "",
-      TRACE = "✎",
-    },
   })
 
-  -- Override default notify
-  vim.notify = notify
+  -- Step 2: "Loading all plugins..."
+  vim.defer_fn(function()
+    notify("Loading all plugins...", "info", {
+      title = "🛠️ FKvim Notifier",
+      timeout = 1500,
+      render = "default",
+    })
+  end, 1200)
+
+  -- Step 3: "FKvim Loaded" and final message
+  vim.defer_fn(function()
+    notify("✅ FKvim Loaded, Welcome", "info", {
+      title = "🎉 FKvim Notifier",
+      timeout = 2000,
+      render = "default",
+    })
+    notify("Happy coding ⚡", "info", {
+      title = "FKvim Notifier",
+      timeout = 2500,
+      render = "default",
+    })
+  end, 2500)
 end
 
 return M
-
