@@ -1,3 +1,10 @@
+-- FKvim Loading Notifications
+vim.schedule(function()
+  require("fk_plugins.fkui.auto_notify").run()
+end)
+
+
+
 -- Files History Loader for Dashboard
 vim.o.shada = "'100,<50,s10,h"
 
