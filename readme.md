@@ -134,8 +134,9 @@ Contributions, suggestions, and issues are welcome!
 Fork the repo, create a branch, and submit a PR.
 
 ---
-
-> FKvim – Made with ❤️ by [Mayank Kumar Jha](https://github.com/flashcodes-themayankjha)
+## ⭐️ Show Your Support 
+If you enjoy using FKvim, consider giving it a ⭐ on GitHub and sharing it with fellow developers. Your support helps FKvim grow!
+> FKvim – Developed by [Mayank Kumar Jha](https://github.com/flashcodes-themayankjha)
 
 
 
