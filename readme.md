@@ -19,19 +19,27 @@
 - 🧪 **Built-in Terminal**, breadcrumbs, Git signs, and much more...
 
 ---
+## 📦 Requirements
 
+Make sure you have the following installed before proceeding:
+
+| Tool            | Version     | Description                                |
+|-----------------|-------------|--------------------------------------------|
+| **Neovim**      | `>= 0.9.0`  | The core editor                            |
+| **Git**         | Latest      | For managing FKvim and plugin cloning      |
+| **Nerd Font**   | Recommended | For icons in the status line and UI        |
+| **Curl/Wget**   | Optional    | For simplified automated installation      |
+
+> 💡 _Optional: Use a terminal that supports true color and transparency for best visuals._
+
+---
 ## 📥 Installation
-
- **Requirements:**
- - Neovim 0.9+  
- - Git  
- - `make` (for native telescope extensions)
 
 ```bash
 git clone https://github.com/Flash-codes/fkvim.git ~/.config/nvim
 nvim
 ````
-> Please refer to our wiki for more detailed installation guide 
+> Please refer to our [📘 Fkvim Wiki](https://github.com/Flash-codes/fkvim/wiki/Getting-Started) for more detailed installation guide 
 
 >On first launch, FKvim will auto-install plugins. Sit back and relax ☕
 
@@ -74,18 +82,6 @@ Explore the [📘 GitHub Wiki](https://github.com/Flash-codes/fkvim/wiki) for:
 * ❓ FAQ
 
 ---
-
-## 🧑‍💻 Contributing
-
-Contributions, suggestions, and issues are welcome!
-Fork the repo, create a branch, and submit a PR.
-
----
-
-## 📸 Preview
-
-
-
 ## 🖼️ Previw
 Below are interactive previews of FKvim features. Click to expand each section.
 
@@ -132,6 +128,12 @@ FKvim is built on the shoulders of amazing open-source tools including:
 
 ---
 
+## 🧑‍💻 Contributing
+
+Contributions, suggestions, and issues are welcome!
+Fork the repo, create a branch, and submit a PR.
+
+---
 
 > FKvim – Made with ❤️ by [Mayank Kumar Jha](https://github.com/flashcodes-themayankjha)
 
