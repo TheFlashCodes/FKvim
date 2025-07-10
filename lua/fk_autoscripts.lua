@@ -47,6 +47,7 @@ vim.api.nvim_create_user_command("FkInstall", function()
 end, { desc = "Open FKvim Toolkit Installer" })
 
 
+
 -- Files History Loader for Dashboard
 vim.o.shada = "'100,<50,s10,h"
 

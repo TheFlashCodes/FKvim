@@ -32,6 +32,7 @@ require("lazy").setup({
       require("fk_plugins.fkcore.fk_status").setup({})
     end,
   },
+
     
     -- FK ToolKit Installer
 
@@ -39,6 +40,7 @@ require("lazy").setup({
   "MunifTanjim/nui.nvim",
   "nvim-lua/plenary.nvim"
 },
+
   -- ✨ Transparent background
   {
     "xiyaowong/nvim-transparent",
