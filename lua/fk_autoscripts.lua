@@ -4,6 +4,48 @@ vim.schedule(function()
 end)
 
 
+-- Fkvim ToolKit Installer 
+
+vim.defer_fn(function()
+  require("fk_plugins.fkcore.fkInstaller").open()
+end, 100)
+
+-- Bootstrapping for First Time (only once)
+vim.defer_fn(function()
+  local data_path = vim.fn.stdpath("data")
+  local install_flag = data_path .. "/.fkvim_installed"
+
+  local file_exists = vim.fn.filereadable(install_flag) == 1
+  local no_args = vim.fn.argc() == 0
+
+  -- Show only if not installed AND no file passed to nvim
+  if not file_exists and no_args then
+    require("fk_plugins.fkcore.fkInstaller").open()
+
+    -- Write flag AFTER some delay (ensure installer loads)
+    vim.defer_fn(function()
+      local f = io.open(install_flag, "w")
+      if f then
+        f:write("installed=true\n")
+        f:close()
+      end
+    end, 500)
+  end
+end, 100)
+
+
+
+-- FkInstall Cmd 
+
+vim.api.nvim_create_user_command("FkInstall", function()
+  local ok, installer = pcall(require, "fk_plugins.fkcore.fkInstaller")
+  if ok then
+    installer.open()
+  else
+    vim.notify("❌ Failed to load FKvim Installer: " .. installer, vim.log.levels.ERROR)
+  end
+end, { desc = "Open FKvim Toolkit Installer" })
+
 
 -- Files History Loader for Dashboard
 vim.o.shada = "'100,<50,s10,h"
