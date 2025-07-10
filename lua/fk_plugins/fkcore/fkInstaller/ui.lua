@@ -27,11 +27,12 @@ local function run_progress(toolkit_name)
     size = { width = 50, height = 6 },
     win_options = {
       winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-    },
+        },
   })
 
-  popup:mount()
-  local bar = "[                    ] 0%"
+popup:mount()
+
+  local bar = "[                                 ] 0%"
   vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, {
     "📡 Cloning from GitHub...",
     "",
@@ -60,7 +61,7 @@ local function run_progress(toolkit_name)
       vim.defer_fn(function()
         popup:unmount()
         vim.g.fk_kit = toolkit_name
-        vim.notify("✅ " .. toolkit_name .. " Installed!", vim.log.levels.INFO, { title = "FKvim" })
+        vim.notify("✅ " .. toolkit_name .. " Installed!", vim.log.levels.INFO, { title = "FKvim Installer" })
       end, 800)
     end
   end))
@@ -83,10 +84,14 @@ local function confirm_install(popup, toolkit_name, branch)
     vim.notify("🚫 Cancelled switching to " .. toolkit_name, vim.log.levels.WARN, { title = "FKvim Installer" })
   end
 end
+
+
+
 -- 🚀 FKvim Installer Main Popup
+
 function M.open()
   local width = math.floor(vim.o.columns * 0.4)
-  local height = 15
+  local height = 16
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
 
@@ -95,7 +100,7 @@ function M.open()
     border = {
       style = "rounded",
       text = {
-        top = "🚀 FKvim Toolkit Installer",
+        top = "🚀 FKvim Developemt Toolkit Installer",
         top_align = "center",
       },
     },
@@ -108,74 +113,74 @@ function M.open()
 
   popup:mount()
 
-
-
-local lines = {
-  "💡 Choose a Toolkit to Install:",
-  "",
-  "  1. 🌐 FKvim Web Dev Kit (WDK)",
-  "  2. 🐍 FKvim Python Dev Kit (PDK)",
-  "  3. ☕ FKvim Java Dev Kit (JDK)",
-  "  4. 🤖 FKvim Android Dev Kit",
-  "  5. 🍎 FKvim iOS Dev Kit",
-  "  6. 💻 FKvim C/C++ Dev Kit",
-  "  7. 🦀 FKvim Rust Dev Kit",
-  "  8. 🐹 FKvim Go Dev Kit",
-  "",
-  "🎯 Press the corresponding number key to install",
-  "🔁 You can switch kits anytime using :FkInstall",
-  "❌ Press 'q' to close this installer",
-  "💡 Each kit loads plugins from its own FKvim branch",
+  local toolkits = {
+    { key = "1", name = "Web Dev Kit",     branch = "fkvim-wdk",    label = "🌐 FKvim Web Dev Kit (WDK)",    hl = "String" },
+    { key = "2", name = "Python Dev Kit",  branch = "fkvim-pdk",    label = "🐍 FKvim Python Dev Kit (PDK)", hl = "Function" },
+    { key = "3", name = "Java Dev Kit",    branch = "fkvim-jdk",    label = "☕ FKvim Java Dev Kit (JDK)",   hl = "Constant" },
+    { key = "4", name = "Android Dev Kit", branch = "fkvim-android",label = "🤖 FKvim Android Dev Kit",     hl = "Type" },
+    { key = "5", name = "iOS Dev Kit",     branch = "fkvim-ios",    label = "🍎 FKvim iOS Dev Kit",         hl = "Include" },
+    { key = "6", name = "C/C++ Dev Kit",   branch = "fkvim-cpp",    label = "💻 FKvim C/C++ Dev Kit",        hl = "PreProc" },
+    { key = "7", name = "Rust Dev Kit",    branch = "fkvim-rust",   label = "🦀 FKvim Rust Dev Kit",         hl = "Special" },
+    { key = "8", name = "Go Dev Kit",      branch = "fkvim-go",     label = "🐹 FKvim Go Dev Kit",           hl = "Identifier" },
   }
 
-    for i, line in ipairs(lines) do
-  local hl = "Normal"
+  colored_line(popup.bufnr, 0, "💡 Choose a Developemt Toolkit to Install:", "Title")
+  vim.api.nvim_buf_set_lines(popup.bufnr, 1, 2, false, { "" })
 
-  if i == 1 then
-    hl = "Title"
-  elseif line:find("Web Dev Kit") then
-    hl = "String"
-  elseif line:find("Python Dev Kit") then
-    hl = "Function"
-  elseif line:find("Java Dev Kit") then
-    hl = "Constant"
-  elseif line:find("Android") then
-    hl = "Type"
-  elseif line:find("iOS") then
-    hl = "Include"
-  elseif line:find("C/C%+%+") then
-    hl = "PreProc"
-  elseif line:find("Rust") then
-    hl = "Special"
-  elseif line:find("Go Dev") then
-    hl = "Identifier"
-  elseif line:find("Press the corresponding") then
-    hl = "Question"
-  elseif line:find("You can switch") then
-    hl = "Operator"
-  elseif line:find("Press 'q'") then
-    hl = "Comment"
-  elseif line:find("Each kit loads") then
-    hl = "DiagnosticInfo"
+  -- Map of line numbers to toolkit
+  local line_to_toolkit = {}
+
+  for i, tk in ipairs(toolkits) do
+    local line_num = i + 1
+    local line = string.format("  %s. %s", tk.key, tk.label)
+    colored_line(popup.bufnr, line_num, line, tk.hl)
+
+    -- Store line number for enter/mouse mapping
+    line_to_toolkit[line_num] = tk
+
+    -- Key mapping
+    vim.keymap.set("n", tk.key, function()
+      confirm_install(popup, tk.name, tk.branch)
+    end, { buffer = popup.bufnr })
+
+    -- Mouse mapping
+    vim.keymap.set("n", "<LeftMouse>", "", {
+      callback = function()
+        local cur_line = vim.fn.line(".")
+        if line_to_toolkit[cur_line] then
+          local tk = line_to_toolkit[cur_line]
+          confirm_install(popup, tk.name, tk.branch)
+        end
+      end,
+      buffer = popup.bufnr,
+    })
   end
 
-  colored_line(popup.bufnr, i - 1, line, hl)
-end
+  -- Enter key functionality
+  vim.keymap.set("n", "<CR>", function()
+    local cur_line = vim.fn.line(".")
+    local tk = line_to_toolkit[cur_line]
+    if tk then
+      confirm_install(popup, tk.name, tk.branch)
+    end
+  end, { buffer = popup.bufnr })
 
+  -- Footer
+  local start_line = #toolkits + 3
+  local instructions = {
+    "🎯 Press the corresponding number key to install",
+    "🔁 You can switch kits anytime using :FkInstall",
+    "❌ Press 'q' to close this installer",
+    "💡 Each kit loads plugins from its own FKvim branch",
+  }
+  local hl_map = { "Question", "Operator", "Comment", "DiagnosticInfo" }
 
-  -- Key mappings
-  vim.keymap.set("n", "1", function() confirm_install(popup, "Web Dev Kit", "fkvim-wdk") end, { buffer = popup.bufnr })
-  vim.keymap.set("n", "2", function() confirm_install(popup, "Python Dev Kit", "fkvim-pdk") end, { buffer = popup.bufnr })
-  vim.keymap.set("n", "3", function() confirm_install(popup, "Java Dev Kit", "fkvim-jdk") end, { buffer = popup.bufnr })
+  for i, text in ipairs(instructions) do
+    colored_line(popup.bufnr, start_line + i - 1, text, hl_map[i])
+  end
+
   vim.keymap.set("n", "q", function() popup:unmount() end, { buffer = popup.bufnr })
-vim.keymap.set("n", "4", function() confirm_install(popup, "Android Dev Kit", "fkvim-android") end, { buffer = popup.bufnr })
-vim.keymap.set("n", "5", function() confirm_install(popup, "iOS Dev Kit", "fkvim-ios") end, { buffer = popup.bufnr })
-vim.keymap.set("n", "6", function() confirm_install(popup, "C/C++ Dev Kit", "fkvim-cpp") end, { buffer = popup.bufnr })
-vim.keymap.set("n", "7", function() confirm_install(popup, "Rust Dev Kit", "fkvim-rust") end, { buffer = popup.bufnr })
-vim.keymap.set("n", "8", function() confirm_install(popup, "Go Dev Kit", "fkvim-go") end, { buffer = popup.bufnr })
-
   popup:on(event.BufLeave, function() popup:unmount() end)
 end
 
 return M
-
