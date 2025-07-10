@@ -1,8 +1,4 @@
-Awesome — here’s a **cleaned-up, polished, and ready-to-use version** of your `README.md` for **FKvim**:
 
----
-
-````markdown
 # ⚡ FKvim
 
 > A modern, minimal, and lightning-fast Neovim setup — designed for performance, aesthetics, and developer productivity.
