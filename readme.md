@@ -1,157 +1,127 @@
 
-# ⚡ FKvim
+# 🌐 FKvim - Web Development Tool Kit (WDK)
 
-> A modern, minimal, and lightning-fast Neovim setup — designed for performance, aesthetics, and developer productivity.
-
-<img width="1710" height="1072" alt="image" src="https://github.com/user-attachments/assets/fbdb5a0a-32b9-40c0-a5ce-596523e7bc6c" />
-
-
-
+> A blazing-fast Neovim configuration tailored for modern web development.  
+> Powered by ⚡ Lua, 🔥 Treesitter, 🧠 LSP, and FKvim’s minimal UX.
 
 ---
 
-## 🚀 Features
+## 🚀 What's FKvim WDK?
 
-- ⚡ **Fast Startup** – Powered by [`lazy.nvim`](https://github.com/folke/lazy.nvim)
-- 🎨 **Modern UI** – Beautiful, transparent, and distraction-free
-- 🧠 **LSP Ready** – Language Server Protocol and smart completion via `nvim-cmp`
-- 📁 **Neo-tree** – Smooth file browsing with Git indicators
-- 🔍 **Telescope** – Blazing fast fuzzy finder
-- 🧩 **Treesitter** – Powerful syntax highlighting & better code understanding
-- 🔔 **Custom Notifications** – Unified Noice UI with minimal alerts
-- 🛠️ **Modular Structure** – Easy to configure, extend, and maintain
-- 🧪 **Built-in Terminal**, breadcrumbs, Git signs, and much more...
+**FKvim WDK** is a plug-and-play Neovim setup optimized for full-stack web development with support for:
 
----
-
-## 📦 Requirements
-
-Make sure you have the following installed:
-
-| Tool          | Version     | Description                                 |
-|---------------|-------------|---------------------------------------------|
-| **Neovim**    | `>= 0.9.0`  | Core editor                                 |
-| **Git**       | Latest      | For managing FKvim and plugin cloning       |
-| **Nerd Font** | Recommended | For icons in status line and UI             |
-| **Curl/Wget** | Optional    | For automated installation scripts          |
-
-> 💡 _Use a terminal that supports true color and transparency for best visuals._
+- 🟨 JavaScript / TypeScript
+- ⚛️ React / Next.js / Vue / Svelte
+- 💅 CSS / SCSS / Tailwind
+- 🌐 HTML
+- 📦 Node.js
+- 🧪 Prettier, ESLint, and Vitest integration
 
 ---
 
-## 📥 Installation
+## ✨ Features
+
+✅ Fully configured **LSP** (via `mason.nvim`)  
+✅ Rich syntax highlighting with **nvim-treesitter**  
+✅ Auto-formatting with **Prettier**  
+✅ Auto-linting with **ESLint**  
+✅ **Telescope** for fuzzy finding  
+✅ **nvim-cmp** for powerful autocompletion  
+✅ Git support via **gitsigns**  
+✅ Project root detection & file explorer  
+✅ Fast startup and minimal bloat  
+✅ Built-in keymaps and helper commands
+
+---
+
+## 📦 Preinstalled Tooling
+
+| Tool        | Purpose                  |
+|-------------|---------------------------|
+| `tsserver`  | JavaScript & TypeScript LSP |
+| `html-lsp`  | HTML support               |
+| `css-lsp`   | CSS, SCSS, Tailwind        |
+| `eslint_d`  | Linting                    |
+| `prettierd` | Auto-formatting            |
+| `emmet-ls`  | Emmet HTML/CSS shortcuts   |
+
+---
+
+## 🧰 Requirements
+
+Make sure you have the following:
+
+- [Neovim 0.9+](https://neovim.io/)
+- [Node.js](https://nodejs.org/) (v16+)
+- Git
+
+Recommended (optional):
 
 ```bash
-git clone https://github.com/Flash-codes/fkvim.git ~/.config/nvim
-nvim
+npm install -g typescript eslint_d prettierd
 ````
 
-> 🧠 On first launch, FKvim will auto-install all plugins via `lazy.nvim`.
-> 📘 Need help? Visit the [FKvim Wiki](https://github.com/Flash-codes/fkvim/wiki/Getting-Started)
-
 ---
 
-## 📁 Directory Structure
+## 🛠 Installation
 
-```
-~/.config/nvim/
-├── init.lua
-├── lua/
-│   ├── fk_plugins/
-│   ├── fk_configs/
-│   └── fk_autoscripts.lua
+Clone FKvim and switch to Web Dev Kit branch:
+
+```bash
+git clone https://github.com/yourname/FKvim ~/.config/nvim
+cd ~/.config/nvim
+git checkout fkvim-wdk
 ```
 
-All configs are organized under `lua/` with proper namespaces for easy maintenance.
+Then launch Neovim:
+
+```bash
+nvim
+```
+
+Run `:Lazy` to install plugins.
 
 ---
 
-## 🔧 Configuration
+## 🔑 Key Features & Shortcuts
 
-FKvim is fully modular and easy to customize:
-
-* Themes, transparency, keymaps, and plugins are modular
-* Add plugins via `lazy.nvim` in `init.lua`
-* Use `lua/fk_configs/` and `lua/fk_plugins/` for custom configuration
-
----
-
-## 📚 Wiki
-
-Explore the [📘 GitHub Wiki](https://github.com/Flash-codes/fkvim/wiki) to learn:
-
-* ✅ Getting Started
-* 🎨 Theme Customization
-* 🔌 Plugin Development
-* 🧠 LSP and Auto Completion
-* 🛠️ Troubleshooting
-* ❓ FAQ
+| Action                 | Shortcut            |
+| ---------------------- | ------------------- |
+| Open File Explorer     | `<leader>e`         |
+| Format file (Prettier) | `<leader>f`         |
+| Open Telescope         | `<leader>ff`        |
+| Show LSP info          | `<leader>li`        |
+| Rename symbol          | `<leader>rn`        |
+| Toggle diagnostics     | `<leader>xx`        |
+| Git status / blame     | `<leader>gs` / `gb` |
 
 ---
 
-## 🖼️ Preview
-Below are interactive previews of FKvim features. Click to expand each section.
+## 🧠 Tips
 
-<details><summary>🎯 Dashboard</summary> <br> <img width="1687" alt="image" src="https://github.com/user-attachments/assets/e3c0002a-ae74-417d-8391-bb7094f20f06" width="800"/> <br> <em>Minimal FKvim Dashboard with project access, recent files, and shortcuts</em> </details>
-
-<details> <summary>🔍 Telescope Fuzzy Finder</summary> <br> <img width="1695" alt="image" src="https://github.com/user-attachments/assets/ffd945c2-1b43-48dc-9b19-cb8f7f3d02d8" />
- <br> <em>Fast fuzzy searching for files, text, buffers, and more with Telescope</em> </details>
-
-<details> <summary>📁 Fkvim Tree - File Explorer powered by Neo Tree</summary> <br> <img width="1707" alt="image" src="https://github.com/user-attachments/assets/8bd5ce1e-a206-4616-821d-8f55301c5288" />
- <br> <em>Modern sidebar with Git integration, diagnostics, and icons</em> </details>
-
-<details> <summary>🧠 LSP + Autocomplete</summary> <br> <img width="1423" alt="image" src="https://github.com/user-attachments/assets/b932361a-b5d1-4f13-b303-b0115c58e47f" />
- <br> <em>Intelligent suggestions with LSP, snippets, and inline docs</em> </details>
- 
-<details> <summary>🔔 Noice + Notify UI</summary> <br> <img width="1674" alt="image" src="https://github.com/user-attachments/assets/5ba70126-6208-45c8-a071-05d9895f479b" />
-<br> <em>Modern notification system and command-line interface using Noice + Notify</em> </details>
-
-<details> <summary>📌 Bufferline Navigation</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/f48c9395-10a3-49f0-8a2f-5fad7c71b871" />
- <br> <em>Visual tabs for each open buffer, with Git and diagnostic signs</em> </details>
-
-<details> <summary>🧬 Treesitter Highlighting</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/3432e449-6354-47b0-903f-43cc3079ab76" />
- <br> <em>Accurate and colorful syntax highlighting powered by Treesitter</em> 
-</details>
-
-<details> <summary>🧪 Floating Terminal</summary> <br> <img width="1709" alt="image" src="https://github.com/user-attachments/assets/2f794784-3a5a-459b-95db-3d6851030fb1" />
- <br> <em>Run terminals inside Neovim — Python, Git, htop, etc.</em> </details>
-
-<details> <summary>🎨 Transparent Theme</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/3ee9885a-11ca-466b-9262-c04cbd3bc0c9" />
- <br> <em>FKvim with True transparency and Default Catppuccin Mocha theme</em> </details>
-
-
+* Use `:Mason` to manage LSP servers.
+* Press `Tab`/`Shift-Tab` to auto-complete and jump through snippets.
+* Use `:Telescope projects` to switch projects quickly.
+* For tailwind support, make sure the `tailwindcss-language-server` is installed.
 
 ---
 
-## 🙏 Credits
+## 📸 Preview
 
-FKvim is built with the help of awesome tools:
-
-* [lazy.nvim](https://github.com/folke/lazy.nvim)
-* [catppuccin](https://github.com/catppuccin/nvim)
-* [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-* [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
-* [noice.nvim](https://github.com/folke/noice.nvim)
-* And many more...
+> *(optional) Insert screenshot or terminal GIF showcasing your WDK UI.*
 
 ---
 
-## 🧑‍💻 Contributing
+## 🧠 Maintained By
 
-We welcome contributions!
-Fork the repo, create a branch, and open a pull request.
-Feel free to suggest features, report bugs, or improve the documentation.
+**Mayank Kumar Jha**
+🚀 [FlashCodes](https://github.com/orgs/Flash-codes/repositories) · 🧩 FKvim Series
 
 ---
 
-## ⭐️ Show Your Support
+## 📄 License
 
-If you enjoy using FKvim, please consider:
+MIT License © 2025 [Mayank Jha](https://github.com/flashcodes-themayankjha)
 
-* Giving the repo a ⭐ on GitHub
-* Sharing it with your developer friends
-* Contributing to the project
-
-> FKvim – Developed by [Mayank Kumar Jha](https://github.com/flashcodes-themayankjha)
 
 
