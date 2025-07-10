@@ -1,119 +1,130 @@
 
-# 🌐 FKvim - Web Development Tool Kit (WDK)
+# 🐍 FKvim - Python Development Kit (PDK)
 
-> A blazing-fast Neovim configuration tailored for modern web development.  
-> Powered by ⚡ Lua, 🔥 Treesitter, 🧠 LSP, and FKvim’s minimal UX.
-
----
-
-## 🚀 What's FKvim WDK?
-
-**FKvim WDK** is a plug-and-play Neovim setup optimized for full-stack web development with support for:
-
-- 🟨 JavaScript / TypeScript
-- ⚛️ React / Next.js / Vue / Svelte
-- 💅 CSS / SCSS / Tailwind
-- 🌐 HTML
-- 📦 Node.js
-- 🧪 Prettier, ESLint, and Vitest integration
+> A lightweight, fast, and batteries-included Neovim setup tailored for Python developers.  
+> Focused on clean visuals, LSP integration, and productivity.
 
 ---
 
-## ✨ Features
+## 🔧 What is FKvim PDK?
 
-✅ Fully configured **LSP** (via `mason.nvim`)  
-✅ Rich syntax highlighting with **nvim-treesitter**  
-✅ Auto-formatting with **Prettier**  
-✅ Auto-linting with **ESLint**  
-✅ **Telescope** for fuzzy finding  
-✅ **nvim-cmp** for powerful autocompletion  
-✅ Git support via **gitsigns**  
-✅ Project root detection & file explorer  
-✅ Fast startup and minimal bloat  
-✅ Built-in keymaps and helper commands
+**FKvim PDK** is a ready-to-code Neovim configuration specifically optimized for Python development.  
+Built on the FKvim core with a modular, minimal design and blazing fast performance.
 
 ---
 
-## 📦 Preinstalled Tooling
+## 🚀 Features
 
-| Tool        | Purpose                  |
-|-------------|---------------------------|
-| `tsserver`  | JavaScript & TypeScript LSP |
-| `html-lsp`  | HTML support               |
-| `css-lsp`   | CSS, SCSS, Tailwind        |
-| `eslint_d`  | Linting                    |
-| `prettierd` | Auto-formatting            |
-| `emmet-ls`  | Emmet HTML/CSS shortcuts   |
+✅ Pre-configured **LSP** with `pyright`  
+✅ Autocompletion with **nvim-cmp**  
+✅ Virtualenv and conda support  
+✅ Built-in **linting** (`ruff`, `flake8`)  
+✅ **Auto-formatting** with `black`  
+✅ Git integration with **gitsigns**  
+✅ Fast fuzzy finding with **telescope.nvim**  
+✅ Clean UI with catppuccin theme
 
 ---
 
-## 🧰 Requirements
+## 🧰 Included Tooling
 
-Make sure you have the following:
+| Tool       | Purpose                     |
+|------------|-----------------------------|
+| `pyright`  | Python LSP                  |
+| `black`    | Code formatting             |
+| `ruff`     | Linting and style enforcement |
+| `mypy`     | Type checking               |
+| `isort`    | Import sorting              |
+
+> All tools can be installed and managed via `mason.nvim`
+
+---
+
+## 📦 Requirements
 
 - [Neovim 0.9+](https://neovim.io/)
-- [Node.js](https://nodejs.org/) (v16+)
+- [Python 3.8+](https://www.python.org/)
 - Git
+- Optional: virtualenv or conda
 
-Recommended (optional):
+To install required tools globally:
 
 ```bash
-npm install -g typescript eslint_d prettierd
+pip install black ruff mypy isort
 ````
 
 ---
 
 ## 🛠 Installation
 
-Clone FKvim and switch to Web Dev Kit branch:
-
 ```bash
 git clone https://github.com/yourname/FKvim ~/.config/nvim
 cd ~/.config/nvim
-git checkout fkvim-wdk
+git checkout fkvim-pdk
 ```
 
-Then launch Neovim:
+Then open Neovim:
 
 ```bash
 nvim
 ```
 
-Run `:Lazy` to install plugins.
+Run `:Lazy` to sync and install plugins.
 
 ---
 
-## 🔑 Key Features & Shortcuts
+## 🧪 LSP Setup
 
-| Action                 | Shortcut            |
-| ---------------------- | ------------------- |
-| Open File Explorer     | `<leader>e`         |
-| Format file (Prettier) | `<leader>f`         |
-| Open Telescope         | `<leader>ff`        |
-| Show LSP info          | `<leader>li`        |
-| Rename symbol          | `<leader>rn`        |
-| Toggle diagnostics     | `<leader>xx`        |
-| Git status / blame     | `<leader>gs` / `gb` |
+FKvim uses `mason.nvim` and `pyright` out-of-the-box:
+
+```bash
+:Mason
+```
+
+To verify the LSP is working, run:
+
+```bash
+:LspInfo
+```
 
 ---
 
-## 🧠 Tips
+## ⌨️ Keybindings
 
-* Use `:Mason` to manage LSP servers.
-* Press `Tab`/`Shift-Tab` to auto-complete and jump through snippets.
-* Use `:Telescope projects` to switch projects quickly.
-* For tailwind support, make sure the `tailwindcss-language-server` is installed.
+| Action               | Shortcut     |
+| -------------------- | ------------ |
+| Format file          | `<leader>f`  |
+| Rename symbol        | `<leader>rn` |
+| LSP diagnostics      | `<leader>xx` |
+| Run Python file      | `<leader>r`  |
+| Toggle file explorer | `<leader>e`  |
+| Telescope files      | `<leader>ff` |
+
+---
+
+## 🔍 Virtualenv Support
+
+FKvim will detect your virtual environment or conda environment automatically.
+Make sure you **activate** your environment before starting Neovim:
+
+```bash
+source venv/bin/activate
+nvim
+```
+
+---
+
+## 💡 Tips
+
+* Use `:Mason` to install or upgrade language servers.
+* Use `ruff` instead of `flake8` for better performance.
+* Use `:checkhealth` to diagnose LSP, Treesitter, Python paths, etc.
 
 ---
 
 ## 📸 Preview
 
-> *(optional) Insert screenshot or terminal GIF showcasing your WDK UI.*
-
----
-
-## 🧠 Maintained By
-
+> *(Optional) Add a screenshot or terminal recording here.*
 **Mayank Kumar Jha**
 🚀 [FlashCodes](https://github.com/orgs/Flash-codes/repositories) · 🧩 FKvim Series
 
