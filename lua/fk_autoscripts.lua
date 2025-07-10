@@ -3,13 +3,6 @@ vim.schedule(function()
   require("fk_plugins.fkui.auto_notify").run()
 end)
 
-
--- Fkvim ToolKit Installer 
-
-vim.defer_fn(function()
-  require("fk_plugins.fkcore.fkInstaller").open()
-end, 100)
-
 -- Bootstrapping for First Time (only once)
 vim.defer_fn(function()
   local data_path = vim.fn.stdpath("data")
@@ -36,15 +29,44 @@ end, 100)
 
 
 -- FkInstall Cmd 
-
 vim.api.nvim_create_user_command("FkInstall", function()
   local ok, installer = pcall(require, "fk_plugins.fkcore.fkInstaller")
-  if ok then
-    installer.open()
-  else
-    vim.notify("❌ Failed to load FKvim Installer: " .. installer, vim.log.levels.ERROR)
+  if not ok or type(installer) ~= "table" or type(installer.open) ~= "function" then
+    vim.notify("❌ Failed to load FKvim Installer:\n" .. tostring(installer), vim.log.levels.ERROR)
+    return
   end
+
+  installer.open()
 end, { desc = "Open FKvim Toolkit Installer" })
+
+
+--Resest Installation again
+
+vim.api.nvim_create_user_command("FkResetInstall", function()
+  local flag = vim.fn.stdpath("data") .. "/.fkvim_installed"
+  if vim.fn.filereadable(flag) == 1 then
+    os.remove(flag)
+    vim.notify("🔁 FKvim installer reset. Restart Neovim to run it again.", vim.log.levels.INFO)
+  else
+    vim.notify("ℹ️ FKvim installer is already unset or never run.", vim.log.levels.WARN)
+  end
+end, { desc = "Reset FKvim installer (show on next launch)" })
+
+-- Temporarily ToolkitChnagers 
+vim.api.nvim_create_user_command("FkSetKit", function()
+  vim.ui.select({ "BASE", "WDK", "PDK", "JDK" }, {
+    prompt = "Select FKvim Toolkit:",
+  }, function(choice)
+    if choice then
+      vim.g.fk_kit = choice
+      vim.notify("🔁 FKvim Toolkit set to " .. choice, vim.log.levels.INFO, { title = "FKvim" })
+      vim.cmd("Dashboard")
+    end
+  end)
+end, { desc = "Temporarily change FKvim toolkit" })
+
+
+
 
 
 

@@ -13,11 +13,11 @@ function M.setup()
     end
 
     local titles = {
-      [vim.log.levels.ERROR] = "🚨 FK Error",
-      [vim.log.levels.WARN]  = "⚠️ FK Warning",
-      [vim.log.levels.INFO]  = "ℹ️ FK Info",
-      [vim.log.levels.DEBUG] = "🐞 FK Debug",
-      [vim.log.levels.TRACE] = "🔍 FK Trace",
+      [vim.log.levels.ERROR] = "FK Error",
+      [vim.log.levels.WARN]  = "FK Warning",
+      [vim.log.levels.INFO]  = "FK Info",
+      [vim.log.levels.DEBUG] = "FK Debug",
+      [vim.log.levels.TRACE] = "FK Trace",
     }
 
     opts = opts or {}

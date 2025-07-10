@@ -1,9 +1,6 @@
-
 local M = {}
 
 function M.setup()
-  -- local navic = require("nvim-navic") -- Commented out since wincrumb is disabled
-
   require("lualine").setup({
     options = {
       theme = "catppuccin",
@@ -32,14 +29,9 @@ function M.setup()
       lualine_c = {
         {
           function()
-            local ft = vim.bo.filetype
-            if ft:match("neo%-tree") then
-              return "FK Explorer"
-            end
-            return vim.fn.expand("%:~:.")
+            return "🛠️ " .. (vim.g.fk_kit or "Base")
           end,
-          icon = "󰛓",
-          color = { fg="#f9e2af", gui = "bold" },
+          color = { fg = "f9e2af", gui = "bold" },
         },
 
         {
@@ -57,17 +49,6 @@ function M.setup()
           always_visible = false,
         },
 
-        -- Navic breadcrumb disabled
-        -- {
-        --   function()
-        --     return navic.is_available() and navic.get_location() or ""
-        --   end,
-        --   cond = function()
-        --     return navic.is_available() and vim.bo.filetype ~= "neo-tree"
-        --   end,
-        --   color = { fg = "#f5c2e7", gui = "italic" },
-        -- },
-
         {
           function()
             return require("nvim-treesitter.parsers").has_parser() and "🌳 TS" or "✗"
@@ -79,31 +60,25 @@ function M.setup()
         },
       },
 
-      -- Custom lualine_x section
-      lualine_x = {
-        {
-          function()
-            if vim.bo.filetype:match("neo%-tree") then
-              return "🗂️ Fkvim"
-            end
-            return vim.bo.fileencoding
-          end,
-          color = function()
-            if vim.bo.filetype:match("neo%-tree") then
-              return { fg = "#f9e2af", gui = "bold" }
-            end
-            return {}
-          end,
-        },
-        {
-          function()
-            if not vim.bo.filetype:match("neo%-tree") then
-              return vim.bo.filetype
-            end
-            return ""
-          end,
-        },
-      },
+lualine_x = {
+  {
+    function()
+      if vim.bo.filetype:match("neo%-tree") then
+        return "🗂️ FKvim Explorer"
+      end
+
+      local lang = vim.bo.filetype ~= "" and vim.bo.filetype or "NoLang"
+      return "🧠 FKvim | " .. lang
+    end,
+    color = function()
+      if vim.bo.filetype:match("neo%-tree") then
+        return { fg = "#f9e2af", gui = "bold" }
+      end
+      return { fg = "#89b4fa", gui = "bold" }
+    end,
+  },
+},
+
 
       lualine_y = { "progress" },
       lualine_z = { "location" },
