@@ -90,60 +90,36 @@ Explore the [📘 GitHub Wiki](https://github.com/Flash-codes/fkvim/wiki) to lea
 ---
 
 ## 🖼️ Preview
+Below are interactive previews of FKvim features. Click to expand each section.
 
-<details><summary>🎯 Dashboard</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/dashboard.png" width="800"/>
-<br><em>Minimal FKvim Dashboard with project access and shortcuts</em>
+<details><summary>🎯 Dashboard</summary> <br> <img width="1687" alt="image" src="https://github.com/user-attachments/assets/e3c0002a-ae74-417d-8391-bb7094f20f06" width="800"/> <br> <em>Minimal FKvim Dashboard with project access, recent files, and shortcuts</em> </details>
+
+<details> <summary>🔍 Telescope Fuzzy Finder</summary> <br> <img width="1695" alt="image" src="https://github.com/user-attachments/assets/ffd945c2-1b43-48dc-9b19-cb8f7f3d02d8" />
+ <br> <em>Fast fuzzy searching for files, text, buffers, and more with Telescope</em> </details>
+
+<details> <summary>📁 Fkvim Tree - File Explorer powered by Neo Tree</summary> <br> <img width="1707" alt="image" src="https://github.com/user-attachments/assets/8bd5ce1e-a206-4616-821d-8f55301c5288" />
+ <br> <em>Modern sidebar with Git integration, diagnostics, and icons</em> </details>
+
+<details> <summary>🧠 LSP + Autocomplete</summary> <br> <img width="1423" alt="image" src="https://github.com/user-attachments/assets/b932361a-b5d1-4f13-b303-b0115c58e47f" />
+ <br> <em>Intelligent suggestions with LSP, snippets, and inline docs</em> </details>
+ 
+<details> <summary>🔔 Noice + Notify UI</summary> <br> <img width="1674" alt="image" src="https://github.com/user-attachments/assets/5ba70126-6208-45c8-a071-05d9895f479b" />
+<br> <em>Modern notification system and command-line interface using Noice + Notify</em> </details>
+
+<details> <summary>📌 Bufferline Navigation</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/f48c9395-10a3-49f0-8a2f-5fad7c71b871" />
+ <br> <em>Visual tabs for each open buffer, with Git and diagnostic signs</em> </details>
+
+<details> <summary>🧬 Treesitter Highlighting</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/3432e449-6354-47b0-903f-43cc3079ab76" />
+ <br> <em>Accurate and colorful syntax highlighting powered by Treesitter</em> 
 </details>
 
-<details><summary>🔍 Telescope Fuzzy Finder</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/telescope.png" width="800"/>
-<br><em>Fast fuzzy searching for files, text, buffers, and more</em>
-</details>
+<details> <summary>🧪 Floating Terminal</summary> <br> <img width="1709" alt="image" src="https://github.com/user-attachments/assets/2f794784-3a5a-459b-95db-3d6851030fb1" />
+ <br> <em>Run terminals inside Neovim — Python, Git, htop, etc.</em> </details>
 
-<details><summary>📁 Neo-tree File Explorer</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/neotree.png" width="800"/>
-<br><em>Sidebar with Git integration, diagnostics, and icons</em>
-</details>
+<details> <summary>🎨 Transparent Theme</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/3ee9885a-11ca-466b-9262-c04cbd3bc0c9" />
+ <br> <em>FKvim with True transparency and Default Catppuccin Mocha theme</em> </details>
 
-<details><summary>🧠 LSP + Autocomplete</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/lsp.png" width="800"/>
-<br><em>Smart completions with LSP, snippets, and inline docs</em>
-</details>
 
-<details><summary>🔔 Noice + Notify UI</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/noice.png" width="800"/>
-<br><em>Modern command-line and notification UI</em>
-</details>
-
-<details><summary>📌 Bufferline Tabs</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/bufferline.png" width="800"/>
-<br><em>Visual buffer navigation with Git and diagnostics</em>
-</details>
-
-<details><summary>🧬 Treesitter Highlighting</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/treesitter.png" width="800"/>
-<br><em>Accurate and beautiful syntax highlighting</em>
-</details>
-
-<details><summary>🧪 Floating Terminal</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/terminal.png" width="800"/>
-<br><em>Open htop, Git, Python, or anything inside Neovim</em>
-</details>
-
-<details><summary>🎨 Transparent Theme</summary>
-<br>
-<img src="https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/transparency.png" width="800"/>
-<br><em>True transparency + Catppuccin Mocha Theme</em>
-</details>
 
 ---
 
