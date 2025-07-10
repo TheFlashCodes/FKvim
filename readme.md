@@ -3,10 +3,7 @@
 
 > A modern, minimal, and lightning-fast Neovim setup — designed for performance, aesthetics, and developer productivity.
 
-<img width="1710" height="1072" alt="image" src="https://github.com/user-attachments/assets/fbdb5a0a-32b9-40c0-a5ce-596523e7bc6c" />
-
-
-
+<img width="1305" alt="image" src="https://github.com/user-attachments/assets/f083ebfa-d89a-4831-86bf-19aed7fdf309" />
 
 ---
 
@@ -90,6 +87,7 @@ Explore the [📘 GitHub Wiki](https://github.com/Flash-codes/fkvim/wiki) to lea
 ---
 
 ## 🖼️ Preview
+## 🖼️ Previw
 Below are interactive previews of FKvim features. Click to expand each section.
 
 <details><summary>🎯 Dashboard</summary> <br> <img width="1687" alt="image" src="https://github.com/user-attachments/assets/e3c0002a-ae74-417d-8391-bb7094f20f06" width="800"/> <br> <em>Minimal FKvim Dashboard with project access, recent files, and shortcuts</em> </details>
@@ -118,6 +116,7 @@ Below are interactive previews of FKvim features. Click to expand each section.
 
 <details> <summary>🎨 Transparent Theme</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/3ee9885a-11ca-466b-9262-c04cbd3bc0c9" />
  <br> <em>FKvim with True transparency and Default Catppuccin Mocha theme</em> </details>
+
 
 
 
