@@ -3,7 +3,10 @@
 
 > A modern, minimal, and lightning-fast Neovim setup — designed for performance, aesthetics, and developer productivity.
 
-![FKvim Dashboard](https://raw.githubusercontent.com/Flash-codes/fkvim/main/assets/dashboard.png)
+<img width="1710" height="1072" alt="image" src="https://github.com/user-attachments/assets/fbdb5a0a-32b9-40c0-a5ce-596523e7bc6c" />
+
+
+
 
 ---
 
