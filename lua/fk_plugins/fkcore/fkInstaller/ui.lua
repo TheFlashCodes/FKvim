@@ -1,4 +1,4 @@
--- Note : Dont Touch FKInstaller
+
 local NuiPopup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
 local Path = require("plenary.path")
@@ -63,14 +63,16 @@ local function run_progress(toolkit_name)
 end
 
 -- 📦 Backup current config
+
+-- 📦 Backup current config
 local function backup_current_config()
-  local config_dir = vim.fn.stdpath("config")
-  local backup_dir = config_dir .. "/fk_backup"
+  local nvim_config = vim.fn.stdpath("config")                         -- ~/.config/nvim
+  local backup_dir = vim.fn.stdpath("config"):gsub("/nvim$", "/fkvim/backup")  -- ~/.config/fkvim/backup
 
-  vim.fn.mkdir(backup_dir, "p")
-  vim.fn.system("cp -r " .. config_dir .. "/* " .. backup_dir)
+  vim.fn.mkdir(backup_dir, "p")                                        -- ensure backup folder exists
+  vim.fn.system("cp -r " .. nvim_config .. "/* " .. backup_dir)
 
-  vim.notify("📦 Your current config has been backed up to ~/.config/nvim/fk_backup", vim.log.levels.INFO)
+  vim.notify("📦 Your config has been backed up to ~/.config/fkvim/backup", vim.log.levels.INFO)
 end
 
 -- 🧠 Switch FKvim Kit
@@ -132,8 +134,8 @@ end
 
 -- 🚀 FKvim Installer Main Popup
 function M.open()
-  local width = math.floor(vim.o.columns * 0.5)
-  local height = 20
+  local width = math.floor(vim.o.columns * 0.4)
+  local height = 16
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
 
@@ -211,4 +213,3 @@ function M.open()
 end
 
 return M
-

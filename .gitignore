@@ -1,4 +1,5 @@
 assets
+fk_backup
 lazy-lock.json
 lua/lsp_test
 lua/fk_custom
