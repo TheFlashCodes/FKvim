@@ -1,4 +1,4 @@
--- Note : Dont Touch FKInstaller
+
 local NuiPopup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
 local Path = require("plenary.path")
@@ -211,4 +211,3 @@ function M.open()
 end
 
 return M
-

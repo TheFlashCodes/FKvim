@@ -1,4 +1,4 @@
--- Note : Dont Touch FKInstaller
+
 local NuiPopup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
 local Path = require("plenary.path")
@@ -103,16 +103,18 @@ local function switch_to_kit(branch)
 end
 
 -- ✅ Confirm install
-local function confirm_install(popup, toolkit_name, branch)
-  local handle = io.popen("git ls-remote --heads origin " .. branch)
-  local result = handle:read("*a")
-  handle:close()
+local function confirm_install(popup, toolkit_name, branch, is_base)
+  if not is_base then
+    local handle = io.popen("git ls-remote --heads origin " .. branch)
+    local result = handle:read("*a")
+    handle:close()
 
-  if result == "" then
-    vim.notify("🚧 We are currently working on the " .. toolkit_name .. ".\nPlease try again later.", vim.log.levels.WARN, {
-      title = "FKvim Installer",
-    })
-    return
+    if result == "" then
+      vim.notify("🚧 We are currently working on the " .. toolkit_name .. ".\nPlease try again later.", vim.log.levels.WARN, {
+        title = "FKvim Installer",
+      })
+      return
+    end
   end
 
   local choice = vim.fn.confirm(
@@ -124,12 +126,17 @@ local function confirm_install(popup, toolkit_name, branch)
   if choice == 1 then
     popup:unmount()
     run_progress(toolkit_name)
-    switch_to_kit(branch)
+
+    if is_base then
+      vim.fn.system("cp -rf ~/.config/nvim/fk_backup/* ~/.config/nvim/")
+      vim.notify("🧱 Restored BASE config from backup!", vim.log.levels.INFO)
+    else
+      switch_to_kit(branch)
+    end
   else
     vim.notify("🚫 Cancelled switching to " .. toolkit_name, vim.log.levels.WARN, { title = "FKvim Installer" })
   end
 end
-
 -- 🚀 FKvim Installer Main Popup
 function M.open()
   local width = math.floor(vim.o.columns * 0.5)
@@ -153,6 +160,7 @@ function M.open()
   popup:mount()
 
   local toolkits = {
+    { key = "0", name = "BASE Version", branch = "main", label = "🧱 Revert to FKvim BASE (Original)", hl = "DiagnosticWarn", is_base = true },
     { key = "1", name = "Web Dev Kit",     branch = "fkvim-wdk",     label = "🌐 FKvim Web Dev Kit (WDK)",    hl = "String" },
     { key = "2", name = "Python Dev Kit",  branch = "fkvim-pdk",     label = "🐍 FKvim Python Dev Kit (PDK)", hl = "Function" },
     { key = "3", name = "Java Dev Kit",    branch = "fkvim-jdk",     label = "☕ FKvim Java Dev Kit (JDK)",   hl = "Constant" },
@@ -211,4 +219,3 @@ function M.open()
 end
 
 return M
-
