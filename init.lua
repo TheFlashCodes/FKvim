@@ -1,5 +1,5 @@
 -- For Base Tool Kit 
-vim.g.fk_kit = "BASE" -- or "PDK", "JDK", "BASE", etc.
+vim.g.fk_kit = "PDK" -- or "PDK", "JDK", "BASE", etc.
 
 require("fk_configs.fk_properties")
 require("fk_configs.fk_cursor")
