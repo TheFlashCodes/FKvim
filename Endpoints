@@ -1,4 +1,9 @@
 
+
+
+
+// Install , Backup , Formating , 2 line code , No revert back 
+
 local NuiPopup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
 local Path = require("plenary.path")
@@ -134,8 +139,8 @@ end
 
 -- 🚀 FKvim Installer Main Popup
 function M.open()
-  local width = math.floor(vim.o.columns * 0.5)
-  local height = 20
+  local width = math.floor(vim.o.columns * 0.4)
+  local height = 16
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
 
