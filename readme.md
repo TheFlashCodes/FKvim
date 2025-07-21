@@ -87,7 +87,6 @@ Explore the [📘 GitHub Wiki](https://github.com/Flash-codes/fkvim/wiki) to lea
 ---
 
 ## 🖼️ Preview
-## 🖼️ Previw
 Below are interactive previews of FKvim features. Click to expand each section.
 
 <details><summary>🎯 Dashboard</summary> <br> <img width="1687" alt="image" src="https://github.com/user-attachments/assets/e3c0002a-ae74-417d-8391-bb7094f20f06" width="800"/> <br> <em>Minimal FKvim Dashboard with project access, recent files, and shortcuts</em> </details>
