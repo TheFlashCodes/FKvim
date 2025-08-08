@@ -53,6 +53,9 @@ vim.g.mapleader = " "  -- Space as leader key
     map("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)  -- recently opened
     map("n", "<leader>rp", "<cmd>Telescope project<CR>", { desc = "Recent Projects" })
 
+-- 🤖 Gemini
+    map("n", "<leader>g", ":lua require('fk_plugins.fk_gemini').toggle_gemini()<CR>", { desc = "🤖 FkGemini" })
+
 
 -- 📂 NeoTree
     map("n", "<leader>e", ":Neotree toggle<CR>", opts)
