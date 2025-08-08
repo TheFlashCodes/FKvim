@@ -1,7 +1,7 @@
-
+-- Core setup
 require("fk_plugins.fkcore.fk_diagnosis").setup()
 require("fk_plugins.fkui.colors")
---require("fk_plugins.fkui.fkui")
+
 -- 🚀 Bootstrap lazy.nvim if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -33,9 +33,7 @@ require("lazy").setup({
     end,
   },
 
-    
-    -- FK ToolKit Installer
-
+    -- FK ToolKit Installer/dependencies
 {
   "MunifTanjim/nui.nvim",
   "nvim-lua/plenary.nvim"
@@ -48,9 +46,15 @@ require("lazy").setup({
       require("transparent").setup({
         enable = true,
         extra_groups = {
+          "Normal", "NormalNC", "NormalFloat", "FloatBorder",
+          "Pmenu", "PmenuSel", "PmenuSbar", "PmenuThumb",
+          "LspFloatWinNormal", "LspFloatWinBorder", "LspInfoBorder",
+          "NoiceCmdlinePopup", "NoiceCmdlinePopupBorder",
+          "CmpDocumentation", "CmpDocumentationBorder",
           "NormalFloat", "NvimTreeNormal", "FloatBorder",
           "TelescopeNormal", "ToggleTermNormal", "ToggleTermBorder",
         },
+        exclude_groups = {},
       })
     end,
   },
@@ -175,6 +179,29 @@ require("lazy").setup({
     end,
   },
 
+  -- 📝 Fknotes
+  {
+    "flashcodes-themayankjha/Fknotes.nvim",
+        dependencies = {
+    'MunifTanjim/nui.nvim',
+    'j-hui/fidget.nvim', -- Optional: for better UI feedback
+  },
+    config = function()
+      require("fknotes").setup({
+             default_task_priority = 'none',
+
+                ui = {
+                    menu_height = 15,
+                },
+                 keymaps = {
+                     open_menu = "<leader>fn",
+                     new_task = "<leader>nt",
+                     browse_tasks = "<leader>ln",
+                    }
+      })
+    end,
+  },
+
   -- ✨ Completion
   {
     "hrsh7th/nvim-cmp",
@@ -206,7 +233,7 @@ require("lazy").setup({
     end,
   },
 
-  --FKui:  Dashboard
+--FKui:  Dashboard
 {
   "nvimdev/dashboard-nvim",
   lazy = false,
