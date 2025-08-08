@@ -21,6 +21,18 @@
 
 ---
 
+## ⚡ Commands
+
+FKvim provides the following custom commands:
+
+| Command             | Description                                       | Keybinding      |
+|---------------------|---------------------------------------------------|-----------------|
+| `:FkGemini`         | Opens the Gemini AI assistant in a split window.  | `<leader>g`     |
+| `:FkGemini update`  | Updates the Gemini CLI to the latest version.     |                 |
+| `:FkInstall Gemini` | Installs the Gemini CLI.                          |                 |
+
+---
+
 ## 📦 Requirements
 
 Make sure you have the following installed:
