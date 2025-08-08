@@ -76,6 +76,7 @@ local function backup_current_config()
 end
 
 -- 🧠 Switch FKvim Kit
+
 local function switch_to_kit(branch)
   local config_dir = vim.fn.stdpath("config")
   backup_current_config()
@@ -132,33 +133,68 @@ local function confirm_install(popup, toolkit_name, branch)
   end
 end
 
--- ⚙️ Install CLI Tool
-local function install_cli_tool(popup, tool_name, install_command)
-  local choice = vim.fn.confirm(
-    "Install " .. tool_name .. "?",
-    "&Yes\n&No",
-    2
-  )
+-- Check if a CLI tool is installed
+local function is_tool_installed(executable)
+  return vim.fn.executable(executable) == 1
+end
 
-  if choice == 1 then
-    popup:unmount()
-    run_progress(tool_name)
-    Job:new({
-      command = install_command,
-      on_exit = function(j, return_val)
-        if return_val == 0 then
-          vim.schedule(function()
-            vim.notify("✅ " .. tool_name .. " installed successfully!", vim.log.levels.INFO)
-          end)
-        else
-          vim.schedule(function()
-            vim.notify("❌ Failed to install " .. tool_name, vim.log.levels.ERROR)
-          end)
-        end
-      end,
-    }):start()
+-- ⚙️ Install or Upgrade CLI Tool
+local function install_cli_tool(popup, tool_name, install_command, update_command, executable)
+  if executable and is_tool_installed(executable) then
+    local choice = vim.fn.confirm(
+      tool_name .. " is already installed. Would you like to upgrade it?",
+      "&Yes\n&No",
+      2
+    )
+    if choice == 1 then
+      popup:unmount()
+      run_progress("Upgrading " .. tool_name)
+      Job:new({
+        command = "bash",
+        args = {"-l", "-c", update_command},
+        on_exit = function(j, return_val)
+          if return_val == 0 then
+            vim.schedule(function()
+              vim.notify("✅ " .. tool_name .. " upgraded successfully!", vim.log.levels.INFO)
+            end)
+          else
+            vim.schedule(function()
+              vim.notify("❌ Failed to upgrade " .. tool_name, vim.log.levels.ERROR)
+            end)
+          end
+        end,
+      }):start()
+    else
+      vim.notify("🚫 Cancelled upgrade of " .. tool_name, vim.log.levels.WARN, { title = "FKvim Installer" })
+    end
   else
-    vim.notify("🚫 Cancelled installation of " .. tool_name, vim.log.levels.WARN, { title = "FKvim Installer" })
+    local choice = vim.fn.confirm(
+      "Install " .. tool_name .. "?",
+      "&Yes\n&No",
+      2
+    )
+
+    if choice == 1 then
+      popup:unmount()
+      run_progress(tool_name)
+      Job:new({
+        command = "bash",
+        args = {"-l", "-c", install_command},
+        on_exit = function(j, return_val)
+          if return_val == 0 then
+            vim.schedule(function()
+              vim.notify("✅ " .. tool_name .. " installed successfully!", vim.log.levels.INFO)
+            end)
+          else
+            vim.schedule(function()
+              vim.notify("❌ Failed to install " .. tool_name, vim.log.levels.ERROR)
+            end)
+          end
+        end,
+      }):start()
+    else
+      vim.notify("🚫 Cancelled installation of " .. tool_name, vim.log.levels.WARN, { title = "FKvim Installer" })
+    end
   end
 end
 
@@ -184,6 +220,16 @@ function M.open()
 
   popup:mount()
 
+  local gemini_install_command
+  local gemini_update_command
+  if vim.fn.has('mac') == 1 then
+    gemini_install_command = "brew install gemini-cli"
+    gemini_update_command = "brew upgrade gemini-cli"
+  else
+    gemini_install_command = "bash -l -c 'npm install -g @google/gemini-cli'"
+    gemini_update_command = "bash -l -c 'npm update -g @google/gemini-cli'"
+  end
+
   local toolkits = {
     { key = "1", name = "Web Dev Kit",     branch = "fkvim-wdk",     label = "🌐 FKvim Web Dev Kit (WDK)",    hl = "String" },
     { key = "2", name = "Python Dev Kit",  branch = "fkvim-pdk",     label = "🐍 FKvim Python Dev Kit (PDK)", hl = "Function" },
@@ -193,7 +239,7 @@ function M.open()
     { key = "6", name = "C/C++ Dev Kit",   branch = "fkvim-cpp",     label = "💻 FKvim C/C++ Dev Kit",         hl = "PreProc" },
     { key = "7", name = "Rust Dev Kit",    branch = "fkvim-rust",    label = "🦀 FKvim Rust Dev Kit",          hl = "Special" },
     { key = "8", name = "Go Dev Kit",      branch = "fkvim-go",      label = "🐹 FKvim Go Dev Kit",            hl = "Identifier" },
-    { key = "9", name = "Gemini CLI",      command = "npm install -g gemini-cli", label = "✨ Gemini CLI", hl = "Title" },
+    { key = "9", name = "Gemini CLI",      command = gemini_install_command, update_command = gemini_update_command, executable = "gemini", label = "✨ Gemini CLI", hl = "Title" },
   }
 
   colored_line(popup.bufnr, 0, "💡 Choose a Development Toolkit to Install:", "Title")
@@ -211,7 +257,7 @@ function M.open()
     if tk.branch then
       vim.keymap.set("n", tk.key, function() confirm_install(popup, tk.name, tk.branch) end, { buffer = popup.bufnr })
     elseif tk.command then
-      vim.keymap.set("n", tk.key, function() install_cli_tool(popup, tk.name, tk.command) end, { buffer = popup.bufnr })
+      vim.keymap.set("n", tk.key, function() install_cli_tool(popup, tk.name, tk.command, tk.update_command, tk.executable) end, { buffer = popup.bufnr })
     end
   end
 
@@ -222,7 +268,7 @@ function M.open()
       if tk.branch then
         confirm_install(popup, tk.name, tk.branch)
       elseif tk.command then
-        install_cli_tool(popup, tk.name, tk.command)
+        install_cli_tool(popup, tk.name, tk.command, tk.update_command, tk.executable)
       end
     end
   end, { buffer = popup.bufnr })
@@ -234,10 +280,11 @@ function M.open()
       if tk.branch then
         confirm_install(popup, tk.name, tk.branch)
       elseif tk.command then
-        install_cli_tool(popup, tk.name, tk.command)
+        install_cli_tool(popup, tk.name, tk.command, tk.update_command, tk.executable)
       end
     end
   end, { buffer = popup.bufnr })
+
 
   local footer = {
     "🎯 Press the corresponding number key to install",
