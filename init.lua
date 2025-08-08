@@ -36,6 +36,8 @@ end
 
 
 require("fk_plugins.fkplug")
+require("fk_plugins.fk_gemini")
+require("fk_plugins.fk_gemini").setup()
 
 
 
