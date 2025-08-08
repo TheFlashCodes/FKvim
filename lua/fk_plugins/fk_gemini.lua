@@ -9,7 +9,7 @@ function M.setup()
     if choice == 1 then
       -- Run the install script
         if vim.fn.has('mac') == 1 then
-            vim.fn.system('brew install gemini-cli')
+            vim.fn.system('npm install -g @google/gemini-cli')
         elseif vim.fn.has('unix') == 1 then
             vim.fn.system('npm install -g @google/gemini-cli')
         else
@@ -24,7 +24,7 @@ local function find_gemini_term()
     for _, buf in ipairs(bufs) do
         if vim.api.nvim_buf_is_loaded(buf) then
             local name = vim.api.nvim_buf_get_name(buf)
-            if name and name:match("term://.*gemini") then
+            if name and (name:match("term://.*gemini") or name:match("FkAI Gemini")) then
                 local chan = vim.api.nvim_buf_get_var(buf, 'terminal_job_id')
                 if chan and vim.fn.jobwait({chan}, 0)[1] == -1 then
                     return buf
@@ -47,6 +47,7 @@ function M.toggle_gemini()
     else
         vim.cmd('vsplit term://gemini')
         vim.cmd('vertical resize 50')
+        vim.api.nvim_buf_set_name(0, "🖥️  FkAI Gemini")
     end
 end
 
