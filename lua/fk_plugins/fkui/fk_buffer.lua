@@ -53,6 +53,13 @@ function M.setup()
           text_align = "center",
           separator = true,
         },
+        {
+          filetype = "terminal",
+          text = " FkAI Gemini",
+          highlight = "Directory",
+          text_align = "center",
+          separator = true,
+        },
       },
     },
 
