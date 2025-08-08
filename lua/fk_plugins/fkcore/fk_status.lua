@@ -65,6 +65,8 @@ lualine_x = {
     function()
       if vim.bo.filetype:match("neo%-tree") then
         return "🗂️ FKvim Explorer"
+      elseif vim.api.nvim_buf_get_name(0):match("FkAI Gemini") then
+        return "🖥️ FkAI Gemini"
       end
 
       local lang = vim.bo.filetype ~= "" and vim.bo.filetype or "NoLang"
@@ -73,6 +75,8 @@ lualine_x = {
     color = function()
       if vim.bo.filetype:match("neo%-tree") then
         return { fg = "#f9e2af", gui = "bold" }
+      elseif vim.api.nvim_buf_get_name(0):match("FkAI Gemini") then
+        return { fg = "#89b4fa", gui = "bold" } -- Using the same color as other FKvim items
       end
       return { fg = "#89b4fa", gui = "bold" }
     end,
