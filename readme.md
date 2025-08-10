@@ -1,14 +1,16 @@
 <h1 align="center">⚡ Fkvim</h1>
 
+<p align="center">
 <a href="https://github.com/TheFlashCodes/FKvim">
   <img src="https://img.shields.io/badge/FkVim-Ecosystem-blueviolet.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTkuODYgMy41bDIuNjcgMy43NEwxNC40OCAzLjVoMy41MkwxMiAxMy4yOCAzLjk4IDMuNWg5Ljg4ek0xMiAxNS4wNGwtMy44NyA1LjQ2aDcuNzVsLTMuODgtNS40NnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt="FkVim Ecosystem"/>
 </a>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Made%20with-Lua-blue.svg?style=for-the-badge&logo=lua" />
   <img src="https://img.shields.io/badge/Powered%20by-Neovim-green.svg?style=for-the-badge&logo=neovim" />
-  <a href="https://github.com/flashcodes-themayankjha/Fknotes.nvim/stargazers"><img src="https://img.shields.io/github/stars/flashcodes-themayankjha/Fknotes.nvim?style=for-the-badge" /></a>
-  <a href="https://github.com/flashcodes-themayankjha/Fknotes.nvim/blob/main/LICENSE"><img src="https://img.shields.io/github/license/flashcodes-themayankjha/Fknotes.nvim?style=for-the-badge" /></a>
+  <a href="https://github.com/TheFlashCodes/FKvim/stargazers"><img src="https://img.shields.io/github/stars/TheFlashCodes/FKvim?style=for-the-badge" /></a>
+  <a href="https://github.com/TheFlashCodes/FKvim/blob/main/LICENSE"><img src="https://img.shields.io/github/license/TheFlashCodes/FKvim?style=for-the-badge" /></a>
 </p>
 
 > A modern, minimal, and lightning-fast Neovim setup — designed for performance, aesthetics, and developer productivity.
