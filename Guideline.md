@@ -1,119 +1,100 @@
-Here’s the **complete Markdown** for your GSSoC Contribution Guidelines — fully ready to copy and paste into a `CONTRIBUTING.md` file or README.
-
-<h1 align="center">🌸 GirlScript Summer of Code – Contribution Guidelines</h1>
+# Fk-NVim Contribution Guidelines
 
 <p align="center">
-<a href="https://gssoc.girlscript.tech/">
-  <img src="https://img.shields.io/badge/GirlScript%20Summer%20of%20Code-Open%20Source%20Program-pink.svg?style=for-the-badge&logo=github" alt="GSSoC Badge"/>
-</a>
+  <a href="https://github.com/Fk-NVim/Fk-NVim">
+    <img src="https://img.shields.io/badge/Fk--NVim-Neovim%20Configuration-blue.svg?style=for-the-badge&logo=neovim" alt="Fk-NVim Badge"/>
+  </a>
+  <a href="https://github.com/Fk-NVim/Fk-NVim/stargazers">
+    <img src="https://img.shields.io/github/stars/Fk-NVim/Fk-NVim?style=for-the-badge" alt="GitHub Stars"/>
+  </a>
+  <a href="https://github.com/Fk-NVim/Fk-NVim/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/Fk-NVim/Fk-NVim?style=for-the-badge" alt="License"/>
+  </a>
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Made%20with-Love-red.svg?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Powered%20by-Open%20Source-blue.svg?style=for-the-badge&logo=open-source-initiative" />
-  <a href="https://github.com/GirlScriptSummerOfCode"><img src="https://img.shields.io/github/stars/GirlScriptSummerOfCode?style=for-the-badge" /></a>
-  <a href="https://gssoc.girlscript.tech/"><img src="https://img.shields.io/badge/Join-Now-orange.svg?style=for-the-badge" /></a>
-</p>
+Welcome to the Fk-NVim project! We are excited that you are interested in contributing. This document provides a comprehensive guide for contributors, whether you are a seasoned open-source developer or a newcomer participating in programs like Google Summer of Code (GSoC) or Open Source Connect.
 
----
+## Philosophy and Goals
 
-# 📜 Contribution Guidelines
+Fk-NVim aims to provide a highly personalized and efficient Neovim experience. Our goal is to create a configuration that is:
 
-Welcome to **GirlScript Summer of Code (GSSoC)**!  
-This guide explains how to contribute effectively and how the **point system** works.
+-   **Fast and Responsive:** We prioritize performance to ensure a smooth user experience.
+-   **Easy to Customize:** We want users to be able to tailor the configuration to their needs.
+-   **Well-Documented:** We believe that good documentation is essential for a successful open-source project.
+-   **Community-Driven:** We encourage and value contributions from the community.
 
----
+## Community and Communication
 
-## 🚀 How to Contribute
+We have several channels for communication and collaboration:
 
-1. **🔍 Find a Project**
-   - Browse the list of participating repositories on the [GSSoC Projects Page](https://gssoc.girlscript.tech/projects).
-   - Read the project’s README and explore open issues.
+-   **GitHub Discussions:** For general questions, ideas, and discussions.
+-   **GitHub Issues:** For bug reports and feature requests.
+-   **Discord/Matrix:** (Coming Soon) We are in the process of setting up a chat server for real-time communication.
 
-2. **🎯 Pick an Issue**
-   - Look for labels like `GSSoC`, `good first issue`, or `help wanted`.
-   - Ask the mentor/maintainer to **assign** the issue to you before starting.
+## Getting Started for New Contributors
 
-3. **🔧 Fork & Clone**
-   ```bash
-   git fork <repo-url>
-   git clone <your-fork-url>
-   
-   ```
+1.  **Fork the Repository:** Click the "Fork" button at the top right of the [Fk-NVim repository](https://github.com/Fk-NVim/Fk-NVim).
+2.  **Clone Your Fork:**
+    ```bash
+    git clone https://github.com/your-username/Fk-NVim.git
+    cd Fk-NVim
+    ```
+3.  **Set Upstream Remote:**
+    ```bash
+    git remote add upstream https://github.com/Fk-NVim/Fk-NVim.git
+    ```
+4.  **Install Dependencies:** Follow the instructions in the `README.md` file to install the necessary dependencies.
+5.  **Find an Issue:** Look for issues labeled `good first issue`, `help wanted`, or `GSoC`.
+6.  **Claim an Issue:** Comment on the issue to let us know you are working on it.
+7.  **Create a Branch:**
+    ```bash
+    git checkout -b your-branch-name
+    ```
+8.  **Start Coding!**
 
-* Set up the project as described in its documentation.
+## Development Workflow
 
-4. **💻 Work on the Issue**
+1.  **Make Changes:** Make your changes to the codebase.
+2.  **Test Your Changes:** Run the existing tests and add new ones if necessary.
+3.  **Commit Your Changes:** Write a clear and concise commit message. We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+4.  **Push Your Changes:**
+    ```bash
+    git push origin your-branch-name
+    ```
+5.  **Create a Pull Request:** Open a pull request from your fork to the `main` branch of the Fk-NVim repository.
+6.  **Code Review:** We will review your pull request and provide feedback.
+7.  **Merge:** Once your pull request is approved, we will merge it into the `main` branch.
 
-   * Follow the coding style, naming conventions, and guidelines.
-   * Keep commits clean and meaningful.
+## Coding Style and Conventions
 
-5. **📬 Create a Pull Request (PR)**
+-   **Lua:** We follow the [Lua Style Guide](https://roblox.github.io/lua-style-guide/).
+-   **Vimscript:** We follow the [Google Vimscript Style Guide](https://google.github.io/styleguide/vimscriptguide.xml).
+-   **Documentation:** We use `LDoc` for Lua documentation.
 
-   * Push your changes to your fork.
-   * Open a PR against the correct branch (`main` or `dev` as per project rules).
-   * Clearly describe your changes and link the issue.
+## Testing
 
-6. **📝 Review & Merge**
+We use [busted](https://lunarmodules.github.io/busted/) for testing. To run the tests, use the following command:
 
-   * Mentors review your PR and assign a **level** (L1, L2, L3).
-   * Once merged, your points will be updated automatically on the leaderboard.
-
----
-
-## 🏆 Points System
-
-| **Level**   | **Description**                    | **Points** |
-| ----------- | ---------------------------------- | ---------- |
-| **L3**      | Small fix (typos, minor docs)      | 5          |
-| **L2**      | Medium feature or moderate changes | 10         |
-| **L1**      | Large feature, major refactor      | 15         |
-| **Invalid** | Spam or irrelevant PR              | -5         |
-
-> 📌 **Note:** Points are awarded only for **merged** PRs.
-
----
-
-## ⚠️ Rules to Remember
-
-* 🚫 No splitting one big task into many small PRs for extra points.
-* ✅ Always follow the [Code of Conduct](https://gssoc.girlscript.tech/code-of-conduct).
-* 💬 Communicate clearly with mentors for assignments.
-* 🕒 Points may take up to **24 hours** to appear on the leaderboard.
-
----
-
-## 📊 Track Your Progress
-
-* Check the **[Leaderboard](https://gssoc.girlscript.tech/leaderboard)** to see your rank.
-* Work consistently to climb the leaderboard.
-
----
-
-## 📈 Contribution Flow
-
-```mermaid
-flowchart LR
-    A[Pick Issue from Project] --> B[Fork Repository]
-    B --> C[Clone to Local Machine]
-    C --> D[Work on Assigned Task]
-    D --> E[Commit & Push Changes]
-    E --> F[Open Pull Request]
-    F --> G[PR Review by Mentors]
-    G --> H{Merged?}
-    H -- Yes --> I[Points Added to Leaderboard]
-    H -- No --> J[Make Required Changes]
-    J --> F
+```bash
+busted
 ```
 
----
+Please make sure to add tests for any new features or bug fixes.
 
-💡 *Happy contributing & keep the open-source spirit alive!* 🚀
+## Documentation
 
-```
+We believe that documentation is crucial for a successful open-source project. Please make sure to document your code clearly and concisely. We use `LDoc` to generate documentation from the source code.
 
-This is **fully copy-paste ready** — it will display the banner, badges, sections, and Mermaid flowchart directly on GitHub.  
+## Roadmap and Future Plans
 
-Do you want me to make the Mermaid diagram **colorful** so it’s visually appealing in GitHub’s dark mode? That would make it pop more.
-```
+We have a public [roadmap](https://github.com/Fk-NVim/Fk-NVim/projects) that outlines our future plans for the project. We encourage you to take a look and contribute to the features that interest you the most.
 
+## Code of Conduct
+
+We have a [Code of Conduct](https://github.com/Fk-NVim/Fk-NVim/blob/main/CODE_OF_CONDUCT.md) that we expect all contributors to follow. Please make sure to read it before you start contributing.
+
+## Acknowledging Contributors
+
+We are grateful for all our contributors. We will acknowledge your contributions in the `README.md` file and on our website.
+
+Thank you for your interest in contributing to Fk-NVim! We look forward to your contributions.
