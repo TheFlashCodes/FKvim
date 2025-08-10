@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fkvim - The Ultimate Neovim Configuration</title>
+    <meta name="description" content="Fkvim is a highly customized and optimized Neovim configuration that provides a seamless and powerful development experience. Get started with Fkvim today and take your coding to the next level.">
+    <meta name="keywords" content="Fkvim, Neovim, Vim, text editor, code editor, Lua, configuration, development, programming, software engineering">
+    <meta name="author" content="Mayank Kumar Jha , FKvim, TheFlashCodes , Flashcodesodes">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Fkvim - The Ultimate Neovim Configuration">
+    <meta property="og:description" content="Fkvim is a highly customized and optimized Neovim configuration that provides a seamless and powerful development experience.">
+    <meta property="og:image" content="https://your-domain.com/fkvim-og-image.png"> <!-- Add an image URL here -->
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fkvim - The Ultimate Neovim Configuration">
+    <meta name="twitter:description" content="Fkvim is a highly customized and optimized Neovim configuration that provides a seamless and powerful development experience.">
+    <meta name="twitter:image" content="https://your-domain.com/fkvim-twitter-card.png"> <!-- Add an image URL here -->
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3a8a, #4c1d95);
+        }
+        .prose {
+            max-width: 80ch;
+            color: #d1d5db;
+        }
+        .prose h1 {
+            font-size: 2.5rem;
+            line-height: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .prose h2 {
+            font-size: 2rem;
+            line-height: 2.25rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        .prose h3 {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #e5e7eb;
+        }
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+        .prose a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        .prose a:hover {
+            color: #93c5fd;
+            text-decoration: underline;
+        }
+        .prose code {
+            background-color: #111827;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            color: #9ca3af;
+        }
+        .prose pre {
+            background-color: #111827;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .prose ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        section {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-white font-sans">
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-900 bg-opacity-50 h-screen sticky top-0 overflow-y-auto shadow-2xl">
+            <div class="p-6">
+                <a href="#" class="text-2xl font-bold text-white">Fkvim</a>
+            </div>
+            <nav class="mt-4">
+                <ul>
+                    <li><a href="#installation" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-200 rounded-r-lg">Installation</a></li>
+                    <li><a href="#setups" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-200 rounded-r-lg">Setups</a></li>
+                    <li><a href="#configuration" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-200 rounded-r-lg">Configuration</a></li>
+                    <li><a href="#contributing" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-200 rounded-r-lg">Contributing</a></li>
+                    <li><a href="https://github.com/TheFlashCodes/FKvim" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-200 rounded-r-lg">GitHub</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Centered Main Content -->
+        <div class="flex-1 flex justify-center">
+            <main class="p-10 prose">
+                <!-- Hero Section -->
+                <section class="text-center mb-16">
+                    <h1 class="text-6xl font-bold text-white">The Ultimate Neovim Configuration</h1>
+                    <p class="text-xl text-gray-300 mt-4">Fkvim provides a seamless and powerful development experience.</p>
+                    <a href="#installation" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-full mt-8 inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">Get Started</a>
+                </section>
+
+                <!-- Installation Section -->
+                <section id="installation">
+                    <h2>Installation</h2>
+                    
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>Neovim >= 0.9.0</li>
+                        <li>Git</li>
+                        <li>Nerd Font (Recommended)</li>
+                        <li>Curl/Wget (Optional)</li>
+                    </ul>
+
+                    <h3>Installation Steps</h3>
+                    <pre><code>git clone https://github.com/TheFlashCodes/FKvim.git ~/.config/nvim
+nvim</code></pre>
+                    <p>On the first launch, Fkvim will automatically install all the required plugins using <code>lazy.nvim</code>.</p>
+                </section>
+
+                <!-- Setups Section -->
+                <section id="setups">
+                    <h2>Setups</h2>
+                    <p>Fkvim is designed to be modular and configurable. The main configuration is handled in <code>init.lua</code>, which loads different modules for plugins, settings, and keybindings.</p>
+                    
+                    <h3>File Structure</h3>
+                    <p>The configuration is organized into several directories inside <code>lua/</code>:</p>
+                    <ul>
+                        <li><code>fk_configs/</code>: Core configurations for Neovim.</li>
+                        <li><code>fk_plugins/</code>: Plugin specifications and configurations.</li>
+                        <li><code>fk_custom/</code>: Your custom configurations that are not tracked by git.</li>
+                    </ul>
+
+                    <h3>Plugin Management</h3>
+                    <p>Fkvim uses <code>lazy.nvim</code> for plugin management. You can add or remove plugins in the files under <code>lua/fk_plugins/</code>.</p>
+                </section>
+
+                <!-- Configuration Section -->
+                <section id="configuration">
+                    <h2>Configuration</h2>
+                    <p>You can customize Fkvim by modifying the files in the <code>lua/</code> directory. For personal customizations that you don't want to commit to your fork, you can use the <code>lua/fk_custom/</code> directory.</p>
+
+                    <h3>Keybindings</h3>
+                    <p>Keybindings are defined in <code>lua/fk_configs/fk_binds.lua</code>. You can change existing keybindings or add new ones in this file.</p>
+
+                    <h3>Adding New Plugins</h3>
+                    <p>To add a new plugin, you can create a new file in <code>lua/fk_plugins/</code> and add the plugin specification there. For example, to add a new plugin <code>my-plugin.lua</code>:</p>
+                    <pre><code>return {
+    'user/my-plugin',
+    -- lazy.nvim options
+}</code></pre>
+                </section>
+
+                <!-- Contributing Section -->
+                <section id="contributing">
+                    <h2>Contributing</h2>
+                    <p>We love contributions from the community! Whether it's a bug report, a new feature, or a documentation improvement, we appreciate your help.</p>
+                    <div class="text-center mt-8">
+                        <a href="https://github.com/TheFlashCodes/FKvim/blob/main/Guideline.md" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-full mt-8 inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">Contribution Guidelines</a>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="text-center text-gray-400 mt-16">
+                    <p>&copy; 2025 Fkvim Community. All rights reserved.</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
