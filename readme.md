@@ -1,5 +1,15 @@
+<h1 align="center">⚡ Fkvim</h1>
 
-# ⚡ FKvim
+<a href="https://github.com/TheFlashCodes/FKvim">
+  <img src="https://img.shields.io/badge/FkVim-Ecosystem-blueviolet.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTkuODYgMy41bDIuNjcgMy43NEwxNC40OCAzLjVoMy41MkwxMiAxMy4yOCAzLjk4IDMuNWg5Ljg4ek0xMiAxNS4wNGwtMy44NyA1LjQ2aDcuNzVsLTMuODgtNS40NnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt="FkVim Ecosystem"/>
+</a>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Made%20with-Lua-blue.svg?style=for-the-badge&logo=lua" />
+  <img src="https://img.shields.io/badge/Powered%20by-Neovim-green.svg?style=for-the-badge&logo=neovim" />
+  <a href="https://github.com/flashcodes-themayankjha/Fknotes.nvim/stargazers"><img src="https://img.shields.io/github/stars/flashcodes-themayankjha/Fknotes.nvim?style=for-the-badge" /></a>
+  <a href="https://github.com/flashcodes-themayankjha/Fknotes.nvim/blob/main/LICENSE"><img src="https://img.shields.io/github/license/flashcodes-themayankjha/Fknotes.nvim?style=for-the-badge" /></a>
+</p>
 
 > A modern, minimal, and lightning-fast Neovim setup — designed for performance, aesthetics, and developer productivity.
 
@@ -7,7 +17,7 @@
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
 - ⚡ **Fast Startup** – Powered by [`lazy.nvim`](https://github.com/folke/lazy.nvim)
 - 🎨 **Modern UI** – Beautiful, transparent, and distraction-free
@@ -21,7 +31,14 @@
 
 ---
 
-## ⚡ Commands
+## 🛠️ Tech Stack
+
+![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
+![Neovim](https://img.shields.io/badge/Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
+
+---
+
+## 🚀 Commands
 
 FKvim provides the following custom commands:
 
@@ -53,7 +70,7 @@ Make sure you have the following installed:
 ```bash
 git clone https://github.com/Flash-codes/fkvim.git ~/.config/nvim
 nvim
-````
+```
 
 > 🧠 On first launch, FKvim will auto-install all plugins via `lazy.nvim`.
 > 📘 Need help? Visit the [FKvim Wiki](https://github.com/Flash-codes/fkvim/wiki/Getting-Started)
@@ -128,9 +145,6 @@ Below are interactive previews of FKvim features. Click to expand each section.
 <details> <summary>🎨 Transparent Theme</summary> <br> <img width="1710" alt="image" src="https://github.com/user-attachments/assets/3ee9885a-11ca-466b-9262-c04cbd3bc0c9" />
  <br> <em>FKvim with True transparency and Default Catppuccin Mocha theme</em> </details>
 
-
-
-
 ---
 
 ## 🙏 Credits
@@ -146,11 +160,24 @@ FKvim is built with the help of awesome tools:
 
 ---
 
-## 🧑‍💻 Contributing
+## 🤝 Contributing
 
-We welcome contributions!
-Fork the repo, create a branch, and open a pull request.
-Feel free to suggest features, report bugs, or improve the documentation.
+We love contributions from the community! Whether it's a bug report, a new feature, or a documentation improvement, we appreciate your help.
+
+### How to Contribute
+
+1.  **Fork the repository** and create a new branch for your changes.
+2.  **Make your changes** and ensure everything is working as expected.
+3.  **Submit a pull request** with a clear description of your changes.
+
+### Found a Bug?
+
+-   Check the [issue tracker](https://github.com/Flash-codes/fkvim/issues) to see if the bug has already been reported.
+-   If not, open a new issue and provide as much detail as possible.
+
+### Have a Feature Idea?
+
+-   We'd love to hear it! Open an issue to discuss your idea.
 
 ---
 
@@ -163,5 +190,3 @@ If you enjoy using FKvim, please consider:
 * Contributing to the project
 
 > FKvim – Developed by [Mayank Kumar Jha](https://github.com/flashcodes-themayankjha)
-
-
