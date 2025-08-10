@@ -33,13 +33,6 @@
 
 ---
 
-## 🛠️ Tech Stack
-
-![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
-![Neovim](https://img.shields.io/badge/Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
-
----
-
 ## 🚀 Commands
 
 FKvim provides the following custom commands:
