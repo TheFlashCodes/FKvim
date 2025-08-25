@@ -99,6 +99,11 @@ We aim to keep things smooth and transparent:
  * You’ll receive feedback, even if the PR isn’t merged immediately.
 * ⌛ Reviews may take **24–72 hours** depending on activity. Thanks for your patience!
 
+> [!NOTE]
+ > Also For getting Points , Mail the Admin or Mentor , [Mayank Jha](mayank.flashcodes@gmail.com) or Send a linkedin DM
+ [Mayank Jha](https://www.linkedin.com/in/mayankkumarjha07/).
+>> For Quicker Responce Send me a DM on Linkdin after Connecting with me 
+
 ---
 
 ## 💬 Community & Communication
@@ -131,9 +136,9 @@ Your contributions earn points that count toward GSSoC'25 and your NeoNest Leade
 
 | Difficulty | Points |
 | :--------- | :----- |
-| Level 1 | 4 |
+| Level 1 | 10 |
 | Level 2 | 7 |
-| Level 3 | 10 |
+| Level 3 | 5  |
 
 > **Note:** The scoring system applies only to GSSOC contributors.
 ---
