@@ -1,14 +1,12 @@
 <h1 align="center">⚡ Fkvim</h1>
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-
+<p align="center">
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/TheFlashCodes/FKvim)
-
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+  ![GSSoC'25](https://img.shields.io/badge/GirlScript%20Summer%20of%20Code-2025-orange?style=for-the-badge)
+</p>
 
 <p align="center">
-
-![GSSoC'25](https://img.shields.io/badge/GirlScript%20Summer%20of%20Code-2025-orange?style=for-the-badge)
 
 <a href="https://github.com/TheFlashCodes/FKvim">
   <img src="https://img.shields.io/badge/FkVim-Ecosystem-blueviolet.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTkuODYgMy41bDIuNjcgMy43NEwxNC40OCAzLjVoMy41MkwxMiAxMy4yOCAzLjk4IDMuNWg5Ljg4ek0xMiAxNS4wNGwtMy44NyA1LjQ2aDcuNzVsLTMuODgtNS40NnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt="FkVim Ecosystem"/>
@@ -242,18 +240,6 @@ We love contributions from the community! Whether it's a bug report, a new featu
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-**⭐️ Show Your Support**
-
-If you enjoy using FKvim, please consider:
-
-* Giving the repo a ⭐ on GitHub
-* Sharing it with your developer friends
-* Contributing to the project
-
-> FKvim – Developed by [Mayank Kumar Jha](https://github.com/flashcodes-themayankjha)
-
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-
 **📜 Code of Conduct**
 
 Please refer to the [`Code of Conduct`](https://github.com/TheFlashCodes/FKvim/blob/main/CODE_OF_CONDUCT.md) for details on contributing guidelines and community standards.
@@ -292,9 +278,13 @@ Feel free to open issues or discussions if you have any feedback, feature sugges
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="150%">
 
-**🙌 Support & Star**
+**⭐️🙌 Show Your Support**
 
-***If you find this project helpful, please give it a star! ⭐ to support more such educational initiatives!***
+*If you find FKvim project helpful, give it a star! ⭐ to support more such educational initiatives:*
+
+* Giving the repo a ⭐ on GitHub
+* Sharing it with your developer friends
+* Contributing to the project
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
@@ -344,7 +334,7 @@ This project is licensed under the MIT License - see the [`License`](https://git
 
 **👨‍💻 Built with ❤️ by Fkvim Team**
 
-**❤️ Mayank Kumar Jha and Contributors ❤️** 
+**❤️ [Mayank Kumar Jha] and [Contributors] ❤️** 
 
 [open an issue](https://github.com/TheFlashCodes/FKvim/issues) | [Report Bug](https://github.com/TheFlashCodes/FKvim/issues)
 
