@@ -118,6 +118,7 @@ require("lazy").setup({
     end,
   },
 
+
   -- 🔁 Bufferline
   {
     "akinsho/bufferline.nvim",
@@ -137,6 +138,46 @@ require("lazy").setup({
     cmd = "Telescope",
     config = function()
       require("fk_plugins.fk_telescope").setup()
+    end,
+  },
+{
+  "smjonas/inc-rename.nvim",
+   config = true,
+},
+    {
+  'b0o/incline.nvim',
+  config = function()
+    require('incline').setup({
+      render = function(props)
+        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+        if filename == "" then return "" end
+        local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+        local buffer = {
+          { ft_icon, guifg = ft_color },
+          { " " },
+          { filename, gui = "bold" },
+        }
+        return buffer
+      end,
+    })
+  end,
+  -- Optional: Lazy load Incline
+  event = 'VeryLazy',
+},
+
+  -- 💡 Lightbulb for code actions
+  {
+    'kosayoda/nvim-lightbulb',
+    config = function()
+      require('nvim-lightbulb').setup({
+        autocmd = {
+          enabled = true
+        },
+        sign = {
+          enabled = true,
+          text = '💡',
+        },
+      })
     end,
   },
 
