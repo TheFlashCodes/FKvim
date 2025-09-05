@@ -195,7 +195,8 @@ require("lazy").setup({
   dependencies = { "akinsho/toggleterm.nvim" },
   config = function()
     require("fk_plugins.fkcore.fkrun").setup()
-  end
+  end,
+}
   
   {
     "nvim-telescope/telescope-fzf-native.nvim",
