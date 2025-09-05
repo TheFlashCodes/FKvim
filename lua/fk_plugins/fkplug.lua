@@ -180,6 +180,15 @@ require("lazy").setup({
       })
     end,
   },
+  ---Auto pair 
+    {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+},
+    
 
   {
     "nvim-telescope/telescope-fzf-native.nvim",
