@@ -190,11 +190,11 @@ require("lazy").setup({
 },
 
     --Fkvim Code Runner 
-    require("lazy").setup({
-  { "CRAG666/code_runner.nvim", config = true },
-},
-    
-
+    {
+    'CRAG666/code_runner.nvim',
+    config = true 
+    },
+  
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
