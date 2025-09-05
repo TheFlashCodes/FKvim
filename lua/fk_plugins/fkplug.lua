@@ -190,10 +190,12 @@ require("lazy").setup({
 },
 
     --Fkvim Code Runner 
-    {
-    'CRAG666/code_runner.nvim',
-    config = true 
-    },
+{
+  "CRAG666/code_runner.nvim",
+  dependencies = { "akinsho/toggleterm.nvim" },
+  config = function()
+    require("fk_plugins.fkcore.fkrun").setup()
+  end
   
   {
     "nvim-telescope/telescope-fzf-native.nvim",
