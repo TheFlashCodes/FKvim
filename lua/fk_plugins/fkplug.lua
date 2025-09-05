@@ -188,6 +188,11 @@ require("lazy").setup({
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
 },
+
+    --Fkvim Code Runner 
+    require("lazy").setup({
+  { "CRAG666/code_runner.nvim", config = true },
+},
     
 
   {
