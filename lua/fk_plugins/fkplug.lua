@@ -236,7 +236,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 📝 Fknotes
+-- 📝 FkNotes Plugin Setup
   {
     "flashcodes-themayankjha/Fknotes.nvim",
         dependencies = {

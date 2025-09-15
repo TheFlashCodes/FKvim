@@ -63,7 +63,7 @@ function M.setup()
       },
     },
 
-    highlights = require("catppuccin.groups.integrations.bufferline").get({
+    highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
       styles = { "bold" },
       custom = {
         all = {
