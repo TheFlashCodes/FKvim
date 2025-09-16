@@ -9,6 +9,7 @@ vim.g.mapleader = " "  -- Space as leader key
     map("n", "<leader>q", ":q<CR>", opts)
     map("n", "<leader>x", ":bd<CR>", opts)
     map("n", "<leader>rr", ":source $MYVIMRC<CR>", opts)
+    map("n", "<leader>o", "<esc>:URLOpenUnderCursor<cr>")
 
 -- 📋 Clipboard
 

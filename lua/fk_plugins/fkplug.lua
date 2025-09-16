@@ -118,7 +118,19 @@ require("lazy").setup({
     end,
   },
 
-
+-- lazy.nvim
+{
+    "sontungexpt/url-open",
+    event = "VeryLazy",
+    cmd = "URLOpenUnderCursor",
+    config = function()
+        local status_ok, url_open = pcall(require, "url-open")
+        if not status_ok then
+            return
+        end
+        url_open.setup ({})
+    end,
+},
   -- 🔁 Bufferline
   {
     "akinsho/bufferline.nvim",
@@ -135,7 +147,6 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     tag = "0.1.6",
     dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = "Telescope",
     config = function()
       require("fk_plugins.fk_telescope").setup()
     end,
@@ -206,18 +217,7 @@ require("lazy").setup({
     end,
   },
 
-  {
-    "ahmedkhalf/project.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("project_nvim").setup({
-        detection_methods = { "pattern" },
-        patterns = { ".git", "Makefile", "package.json" },
-        exclude_dirs = { "~/" },
-      })
-      require("telescope").load_extension("projects")
-    end,
-  },
+  
 
   -- 🌈 Treesitter
   {
@@ -289,7 +289,32 @@ require("lazy").setup({
       require("fk_plugins.fkcore.autofk").setup()
     end,
   },
+{
+  "mfussenegger/nvim-jdtls",
+  ft = { "java" },
+  config = function()
+    local jdtls = require("jdtls")
 
+    local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+    local root_dir = require("jdtls.setup").find_root(root_markers)
+
+    local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+    local workspace_dir = vim.fn.stdpath("data") .. "/jdtls-workspace/" .. project_name
+
+    local config = {
+      cmd = { "jdtls" },
+      root_dir = root_dir,
+      settings = {
+        java = {},
+      },
+      init_options = {
+        workspaceFolders = { workspace_dir },
+      },
+    }
+
+    jdtls.start_or_attach(config)
+  end,
+},
 --FKui:  Dashboard
 {
   "nvimdev/dashboard-nvim",
@@ -303,6 +328,15 @@ require("lazy").setup({
     return require("fk_plugins.fkui.fk_dashboard")
   end,
 },
+
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {
+      dir = vim.fn.stdpath("data") .. "/sessions/",
+      options = { "buffers", "curdir", "tabpages", "winsize" },
+    },
+  },
 
 -- ⌨️ Which Key
 {
