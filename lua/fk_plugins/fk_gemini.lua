@@ -1,165 +1,104 @@
-
-local NuiPopup = require("nui.popup")
-local Job = require("plenary.job")
 local M = {}
 
--- 🌈 Popup progress bar
-local function show_progress(title, stages, on_complete)
-  local popup = NuiPopup({
-    border = {
-      style = "rounded",
-      text = { top = title, top_align = "center" },
-    },
-    position = "50%",
-    size = { width = 50, height = 6 },
-    win_options = {
-      winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-    },
+local gemini_term_buf = nil
+
+local function install_or_update(cmd, installing_msg, success_msg, fail_msg)
+  vim.notify(installing_msg, vim.log.levels.INFO)
+  local job_id = vim.fn.jobstart(cmd, {
+    on_exit = function(j_id, code, event) 
+      if code == 0 then
+        vim.notify(success_msg, vim.log.levels.INFO)
+      else
+        vim.notify(fail_msg .. ": " .. tostring(code), vim.log.levels.ERROR)
+      end
+    end,
   })
-
-  popup:mount()
-
-  vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, {
-    "🔄 Working...",
-    "",
-    "[                                 ] 0%",
-  })
-
-  local i = 1
-  local timer = vim.loop.new_timer()
-  timer:start(200, 300, vim.schedule_wrap(function()
-    if i <= #stages then
-      vim.api.nvim_buf_set_lines(popup.bufnr, 2, 3, false, { stages[i] })
-      i = i + 1
-    else
-      timer:stop()
-      timer:close()
-      vim.defer_fn(function()
-        popup:unmount()
-        if on_complete then on_complete() end
-      end, 500)
-    end
-  end))
 end
 
--- 🛠️ Install or update
-local function install_or_update(cmd, title, success_msg, fail_msg)
-  show_progress("🚀 " .. title, {
-    "  [███                              ] 10%",
-    "  [███████                          ] 30%",
-    "  [████████████                    ] 50%",
-    "  [██████████████████              ] 70%",
-    "  [████████████████████████        ] 90%",
-    "  [███████████████████████████████] 100%",
-  }, function()
-    Job:new({
-      command = "bash",
-      args = { "-l", "-c", cmd },
-      on_exit = function(_, return_val)
-        vim.schedule(function()
-          if return_val == 0 then
-            vim.notify("✅ " .. success_msg, vim.log.levels.INFO)
-          else
-            vim.notify("❌ " .. fail_msg, vim.log.levels.ERROR)
-          end
-        end)
-      end,
-    }):start()
-  end)
-end
-
--- 📦 Setup check
-function M.setup()
+local function check_and_install_gemini()
   if vim.fn.executable('gemini') == 0 then
     vim.notify('gemini-cli not found. Please install it.', vim.log.levels.WARN)
     local choice = vim.fn.confirm('Install gemini-cli now?', '&Yes\n&No', 2)
     if choice == 1 then
-      local cmd = (vim.fn.has('mac') == 1 or vim.fn.has('unix') == 1)
-        and "npm install -g @google/gemini-cli"
-        or nil
-
-      if cmd then
-        install_or_update(cmd, "Installing gemini-cli", "gemini-cli installed", "Installation failed")
+      local cmd = ""
+      if vim.fn.has("mac") == 1 then
+        cmd = "npm install -g @google/gemini-cli" -- Assuming npm is available
+      elseif vim.fn.has("unix") == 1 then
+        cmd = "npm install -g @google/gemini-cli" -- Assuming npm is available
       else
-        vim.notify('Unsupported OS. Please install manually.', vim.log.levels.ERROR)
+        vim.notify("Unsupported OS for gemini installation", vim.log.levels.ERROR)
+        return false
       end
+      install_or_update(cmd, "Installing gemini-cli", "gemini-cli installed", "Installation failed")
+      return false
+    else
+      vim.notify("gemini-cli not installed. FkGemini will not work.", vim.log.levels.ERROR)
+      return false
     end
   end
+  return true
 end
 
--- 🧠 Toggle Terminal
 local function find_gemini_term()
-  local bufs = vim.api.nvim_list_bufs()
-  for _, buf in ipairs(bufs) do
-    if vim.api.nvim_buf_is_loaded(buf) then
-      local name = vim.api.nvim_buf_get_name(buf)
-      if name and (name:match("term://.*gemini") or name:match("FkAI Gemini")) then
-        local chan = vim.api.nvim_buf_get_var(buf, 'terminal_job_id')
-        if chan and vim.fn.jobwait({ chan }, 0)[1] == -1 then
-          return buf
-        end
-      end
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    local name = vim.api.nvim_buf_get_name(buf)
+    if name and (name:match("term://.*gemini") or name:match("FkAI Gemini")) then
+      return buf
     end
   end
   return nil
 end
 
 function M.toggle_gemini()
+  if not check_and_install_gemini() then
+    return
+  end
+
   local term_buf = find_gemini_term()
-  if term_buf then
+
+  if term_buf and vim.api.nvim_buf_is_valid(term_buf) then
+    -- If Gemini terminal exists and is valid, toggle its visibility
     local win_id = vim.fn.bufwinid(term_buf)
     if win_id ~= -1 then
+      -- If the buffer is in a window, close the window
       vim.api.nvim_win_close(win_id, true)
     else
-      vim.api.nvim_buf_delete(term_buf, { force = true })
+      -- If the buffer exists but is not in a window, open it
+      vim.cmd('vsplit')
+      vim.api.nvim_set_current_buf(term_buf)
     end
   else
+    -- If no Gemini terminal exists or it's invalid, create a new one
     vim.cmd('vsplit term://gemini')
-    vim.cmd('vertical resize 50')
     vim.api.nvim_buf_set_name(0, "🖥️  FkAI Gemini")
+    gemini_term_buf = vim.api.nvim_get_current_buf()
   end
 end
 
--- 🔁 Update/Launch
 function M.open_gemini(args)
-  if args.fargs[1] == 'update' then
-    local cmd = (vim.fn.has('mac') == 1 or vim.fn.has('unix') == 1)
-      and "npm update -g @google/gemini-cli"
-      or nil
+  if not check_and_install_gemini() then
+    return
+  end
 
-    if cmd then
-      install_or_update(cmd, "Updating gemini-cli", "gemini-cli updated", "Update failed")
+  if args and args[1] == "update" then
+    local cmd = ""
+    if vim.fn.has("mac") == 1 then
+      cmd = "npm update -g @google/gemini-cli"
+    elseif vim.fn.has("unix") == 1 then
+      cmd = "npm update -g @google/gemini-cli"
     else
-      vim.notify("Unsupported OS for update", vim.log.levels.ERROR)
+      vim.notify("Unsupported OS for gemini update", vim.log.levels.ERROR)
+      return
     end
+    install_or_update(cmd, "Updating gemini-cli", "gemini-cli updated", "Update failed")
   else
     M.toggle_gemini()
   end
 end
 
--- 📦 Direct install (from command)
-function M.install_package(args)
-  local package = args.fargs[1]
-  if package == 'Gemini' then
-    local cmd
-    if vim.fn.has('mac') == 1 then
-      cmd = "brew install gemini-cli"
-    elseif vim.fn.has('unix') == 1 then
-      cmd = "npm install -g @google/gemini-cli"
-    end
-
-    if cmd then
-      install_or_update(cmd, "Installing gemini-cli", "gemini-cli installed", "Installation failed")
-    else
-      vim.notify("Unsupported OS for gemini installation", vim.log.levels.ERROR)
-    end
-  else
-    vim.notify("❌ Package not supported: " .. package, vim.log.levels.ERROR)
-  end
+function M.setup()
+  vim.api.nvim_create_user_command('FkGemini', M.open_gemini, { nargs = '?' })
 end
-
--- 🧩 Commands
-vim.api.nvim_create_user_command('FkGemini', M.open_gemini, { nargs = '?' })
-vim.api.nvim_create_user_command('FkInstall', M.install_package, { nargs = '*' })
 
 return M

@@ -13,31 +13,8 @@ vim.defer_fn(function()
 
   -- Show only if not installed AND no file passed to nvim
   if not file_exists and no_args then
-    require("fk_plugins.fkcore.fkInstaller").open()
-
-    -- Write flag AFTER some delay (ensure installer loads)
-    vim.defer_fn(function()
-      local f = io.open(install_flag, "w")
-      if f then
-        f:write("installed=true\n")
-        f:close()
-      end
-    end, 500)
-  end
+    end
 end, 100)
-
-
-
--- FkInstall Cmd 
-vim.api.nvim_create_user_command("FkInstall", function()
-  local ok, installer = pcall(require, "fk_plugins.fkcore.fkInstaller")
-  if not ok or type(installer) ~= "table" or type(installer.open) ~= "function" then
-    vim.notify("❌ Failed to load FKvim Installer:\n" .. tostring(installer), vim.log.levels.ERROR)
-    return
-  end
-
-  installer.open()
-end, { desc = "Open FKvim Toolkit Installer" })
 
 
 --Resest Installation again
