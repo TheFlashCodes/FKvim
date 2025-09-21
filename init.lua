@@ -26,4 +26,5 @@ vim.api.nvim_create_autocmd("VimLeave", {
   end,
 })
 
+vim.api.nvim_set_hl(0, "FloatTitle", { link = "NormalFloat" })
 
