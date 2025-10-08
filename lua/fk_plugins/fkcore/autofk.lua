@@ -6,8 +6,6 @@ function M.setup()
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
   local navic = require("nvim-navic")
 
-  local lspconfig = require("lspconfig")
-
   -- ✅ Replace tsserver with vtsls
   local servers = {
     "lua_ls",
@@ -21,11 +19,15 @@ function M.setup()
     end
   end
 
+  -- Define global LSP settings
+  vim.lsp.config('*', {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+
+  -- Enable the servers
   for _, server in ipairs(servers) do
-    lspconfig[server].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    vim.lsp.enable(server)
   end
 
   -- ☕ Java (jdtls)
